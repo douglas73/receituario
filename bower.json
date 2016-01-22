@@ -1,0 +1,27 @@
+{
+  "name": "Sistema de Criação de Receitas para consultorios",
+  "description": "Criação de Receitas medicas",
+  "main": "main.js",
+  "authors": [
+    "Douglas A. Oliveira http://www.proliberal.com.br"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "receitas",
+    "médicas"
+  ],
+  "moduleType": [
+    "node"
+  ],
+  "homepage": "http/www.proliberal.com.br/projetos/receituario",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "font-awesome": "~4.3.0",
+    "Chart.js": "~1.0.2",
+    "AdminLTE": "admin-lte#~2.3.2",
+    "iCheck": "icheck#~1.0.2",
+    "Ionicons": "ionicons#~2.0.1",
+    "datatables": "DataTables#~1.10.10"
+  }
+}
