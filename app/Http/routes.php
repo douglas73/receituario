@@ -16,6 +16,8 @@ Route::get('/', ['as' => 'home', 'uses' => 'Sistema\SistemaController@home']);
 # Rota para pagina principal do sistema
 Route::get('home', ['as' => 'home', 'uses' => 'Sistema\SistemaController@home']);
 
+Route::get('menu', ['as' => 'menu', 'uses' => 'Sistema\SistemaController@menu']);
+
 # Rota para registro de Novos usuários no Sistema
 Route::get('registro', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
 
@@ -35,6 +37,10 @@ Route::get('principal', ['middleware' => 'auth', function() {
     return view('teste');
 }]);
 
+
+
+
+
 // Authentication routes...
  Route::get('auth/login', 'Auth\AuthController@getLogin');
  Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -51,8 +57,8 @@ Route::post('auth/register', 'Auth\AuthController@postRegister');
 # Medicamentos
 ######################################
 Route::group(['prefix' => 'medicacao'], function () {
-    Route::get('listagem',  ['as' => 'medicacao.index',     'uses' => 'MedicacaoController@index']);
-    Route::get('cadastro',  ['as' => 'medicacao.create',    'uses' => 'MedicacaoController@create']);
-    Route::get('edicao/{id}',  ['as' => 'medicacao.edit',    'uses' => 'MedicacaoController@edit']);
-    Route::post('store',    ['as' => 'medicacao.store',     'uses' => 'MedicacaoController@store']);
+    Route::get('listagem',      ['as' => 'medicacao.index',     'uses' => 'MedicacaoController@index']);
+    Route::get('cadastro',      ['as' => 'medicacao.create',    'uses' => 'MedicacaoController@create']);
+    Route::get('edicao/{id}',   ['as' => 'medicacao.edit',      'uses' => 'MedicacaoController@edit']);
+    Route::post('store',        ['as' => 'medicacao.store',     'uses' => 'MedicacaoController@store']);
 });

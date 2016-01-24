@@ -30,7 +30,7 @@ class MenuTableSeeder extends Seeder
             'nome'                          => 'Receitas',
             'rota'                          => '',
             'descricao'                     => 'Gerenciador de Receitas',
-            'icone'                         => 'fa fa-home',
+            'icone'                         => 'fa fa-book',
             'ordem'                         => 0,
             'status'                        => 1,
         ]);
@@ -41,7 +41,7 @@ class MenuTableSeeder extends Seeder
             'nome'                          => 'Nova Receita',
             'rota'                          => '',
             'descricao'                     => 'Criar nova Receita',
-            'icone'                         => 'fa fa-hacker-news',
+            'icone'                         => 'fa fa-stethoscope',
             'ordem'                         => 1,
             'status'                        => 1,
         ]);
@@ -53,7 +53,7 @@ class MenuTableSeeder extends Seeder
             'nome'                          => 'Carregar Receita',
             'rota'                          => '',
             'descricao'                     => 'Carrega receita previamente gravada no sistema',
-            'icone'                         => 'fa fa-hacker-news',
+            'icone'                         => 'fa fa-folder-open',
             'ordem'                         => 2,
             'status'                        => 1,
         ]);
@@ -64,7 +64,7 @@ class MenuTableSeeder extends Seeder
             'nome'                          => 'Editar Receita',
             'rota'                          => '',
             'descricao'                     => 'Edição de receita previamente gravada no sistema',
-            'icone'                         => 'fa fa-hacker-news',
+            'icone'                         => 'fa fa-edit',
             'ordem'                         => 3,
             'status'                        => 1,
         ]);
@@ -162,6 +162,63 @@ class MenuTableSeeder extends Seeder
             'status'                        => 1,
         ]);
         $this->command->info('Item de Grupo Menu Medicos: [Editar] criado com sucesso!');
+
+
+        \App\Menu::create([
+            'menu_id'                       => 0,
+            'nome'                          => 'Medicamentos',
+            'rota'                          => '',
+            'descricao'                     => 'Gerenciador de Medicamentos do sistema',
+            'icone'                         => 'fa fa-user-md',
+            'ordem'                         => 1,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Grupo Menu Medicos criado com sucesso!');
+
+        \App\Menu::create([
+            'menu_id'                       => 14,
+            'nome'                          => 'Listagem',
+            'rota'                          => 'medicacao.index',
+            'descricao'                     => 'Listagem dos medicamentos cadastrados',
+            'icone'                         => 'fa fa-list-ol',
+            'ordem'                         => 1,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Listagem] criado com sucesso!');
+
+
+        \App\Menu::create([
+            'menu_id'                       => 14,
+            'nome'                          => 'Cadastro',
+            'rota'                          => 'medicacao.create',
+            'descricao'                     => 'Cadastro dos medicamentos',
+            'icone'                         => 'fa fa-plus-square-o',
+            'ordem'                         => 2,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Cadastro] criado com sucesso!');
+
+              \App\Menu::create([
+            'menu_id'                       => 14,
+            'nome'                          => 'Edição',
+            'rota'                          => '',
+            'descricao'                     => 'Edição dos medicamentos cadastrados',
+            'icone'                         => 'fa fa-edit',
+            'ordem'                         => 3,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Edição] criado com sucesso!');
+
+        \App\Menu::create([
+            'menu_id'                       => 14,
+            'nome'                          => 'Categoria de Medicação',
+            'rota'                          => '',
+            'descricao'                     => 'Gerenciador de Categoria de Medicamentos do sistema',
+            'icone'                         => 'fa fa-tasks',
+            'ordem'                         => 4,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Categoria de Medicação] criado com sucesso!');
 
 
 

@@ -18,7 +18,7 @@ class CreateMenuTable extends Migration
             $table->string('nome',40);
             $table->string('rota',60);
             $table->text('descricao');
-            $table->string('icone',15);
+            $table->string('icone',30);
             $table->integer('ordem');
             $table->integer('status');
 

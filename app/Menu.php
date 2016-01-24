@@ -14,12 +14,26 @@ class Menu extends Model
      */
     protected $table = 'menu';
 
-    use SoftDeletes;
+    // use SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+
     protected $fillable = ['menu_id', 'nome', 'descricao', 'rota','icone','status','ordem'];
+
+
+    public function filhos()
+    {
+        return $this->hasMany(Menu::class, 'menu_id');
+    }
+
+    public function pai()
+    {
+        return $this->belongsTo(Menu::class, 'menu_id');
+    }
+
+
 }
