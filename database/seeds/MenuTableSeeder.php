@@ -201,7 +201,7 @@ class MenuTableSeeder extends Seeder
               \App\Menu::create([
             'menu_id'                       => 14,
             'nome'                          => 'Edição',
-            'rota'                          => '',
+            'rota'                          => 'medicacao.index',
             'descricao'                     => 'Edição dos medicamentos cadastrados',
             'icone'                         => 'fa fa-edit',
             'ordem'                         => 3,
@@ -210,15 +210,51 @@ class MenuTableSeeder extends Seeder
         $this->command->info('Item de Grupo Menu Medicamentos: [Edição] criado com sucesso!');
 
         \App\Menu::create([
-            'menu_id'                       => 14,
+            'menu_id'                       => 0,
             'nome'                          => 'Categoria de Medicação',
             'rota'                          => '',
             'descricao'                     => 'Gerenciador de Categoria de Medicamentos do sistema',
             'icone'                         => 'fa fa-tasks',
-            'ordem'                         => 4,
+            'ordem'                         => 1,
             'status'                        => 1,
         ]);
-        $this->command->info('Item de Grupo Menu Medicamentos: [Categoria de Medicação] criado com sucesso!');
+
+        $this->command->info('Grupo Menu Categoria de Medicação criado com sucesso!');
+
+        \App\Menu::create([
+            'menu_id'                       => 18,
+            'nome'                          => 'Listagem',
+            'rota'                          => 'catmedicacao.index',
+            'descricao'                     => 'Listagem dos medicamentos cadastrados',
+            'icone'                         => 'fa fa-list-ol',
+            'ordem'                         => 1,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Listagem] criado com sucesso!');
+
+
+        \App\Menu::create([
+            'menu_id'                       => 18,
+            'nome'                          => 'Cadastro',
+            'rota'                          => 'catmedicacao.create',
+            'descricao'                     => 'Cadastro dos medicamentos',
+            'icone'                         => 'fa fa-plus-square-o',
+            'ordem'                         => 2,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Cadastro] criado com sucesso!');
+
+        \App\Menu::create([
+            'menu_id'                       => 18,
+            'nome'                          => 'Edição',
+            'rota'                          => 'catmedicacao.index',
+            'descricao'                     => 'Edição dos medicamentos cadastrados',
+            'icone'                         => 'fa fa-edit',
+            'ordem'                         => 3,
+            'status'                        => 1,
+        ]);
+        $this->command->info('Item de Grupo Menu Medicamentos: [Edição] criado com sucesso!');
+
 
 
 

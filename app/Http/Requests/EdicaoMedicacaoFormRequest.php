@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MedicacaoFormRequest extends Request
+class EdicaoMedicacaoFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class MedicacaoFormRequest extends Request
     public function rules()
     {
         return [
-            'nome'                      => 'required',
+            'nome'  => 'required',
             'categoria_medicacao_id'    => 'required',
             'posologia'                 => 'required',
             'status'                    => 'required',
@@ -42,4 +42,5 @@ class MedicacaoFormRequest extends Request
             'posologia.required'                => 'A posologia do medicamento é de preenchimento obrigatório.',
         ];
     }
+
 }

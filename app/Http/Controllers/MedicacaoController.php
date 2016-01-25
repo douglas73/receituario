@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\CatMedicacao;
 use App\Medicacao;
 use Illuminate\Http\Request;
-
+use Illuminate\Session;
 // use App\Http\Requests;
 use App\Http\Requests\MedicacaoFormRequest;
+use App\Http\Requests\EdicaoMedicacaoFormRequest;
 use App\Http\Controllers\Controller;
 
 
@@ -25,10 +26,7 @@ class MedicacaoController extends Controller
      */
     public function index()
     {
-        //return '<p>Você esta na home de Cadastro de Medicação</p>';
         $medicacao = Medicacao::orderBy('nome', 'asc')->get();
-       // dd($medicacao);
-
         return view('medicacao.listagem', compact('medicacao'));
     }
 
@@ -80,10 +78,16 @@ class MedicacaoController extends Controller
      */
     public function edit($id)
     {
-        //
-        $medicacao =  Medicacao::findOrFail($id);
-        dd($medicacao);
+        // session(['Edicao' => 'Douglas']);
+        session()->put('idMedicacao', $id);
 
+        $categorias     = CatMedicacao::all();
+        $medicacao      =  Medicacao::findOrFail((int) $id);
+        $idReg          = $id;
+       //  return view('medicacao/edit', compact('medicacao', 'categorias'));
+
+        return view('medicacao.edicao', compact('categorias','medicacao','idReg'));
+         // dd($medicacao);
     }
 
     /**
@@ -93,9 +97,25 @@ class MedicacaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EdicaoMedicacaoFormRequest $request, $id)
     {
-        //
+        if($id != session("idMedicacao"))
+        {
+            abort(403, 'Violação de parâmetros.');
+        }
+
+        $updateMedicacao = Medicacao::find($id);
+        if($updateMedicacao->update($request->all()))
+        {
+            session()->flash('toastr.success', "Confirmado! O medicamento  ".$request->get('nome')." foi ATUALIZADO com sucesso!");
+        }else{
+            session()->flash('toastr.error', "ERRO!  Medicamento ".$request->get('nome')." NÃO foi ATUALIZADO! Por favor repita a operação");
+        }
+        session()->forget('idMedicacao');
+        return redirect('medicacao/listagem');
+
+
+
     }
 
     /**

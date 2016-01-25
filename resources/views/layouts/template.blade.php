@@ -216,7 +216,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- /.search form -->
 
             <!-- Sidebar Menu -->
-            @include('sistema.menu', ['menus' => \App\Menu::where('menu_id', 0)->orderBy('ordem', 'asc')->get()])
+            @include('sistema.menu', ['menus' => \App\Menu::where('menu_id',0)->orderBy('ordem', 'asc')->get()])
             <!-- /.sidebar-menu -->
         </section>
         <!-- /.sidebar -->

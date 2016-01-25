@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class MedicacaoFormRequest extends Request
+class EdicaoCatMedicacaoFormRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,7 @@ class MedicacaoFormRequest extends Request
     public function rules()
     {
         return [
-            'nome'                      => 'required',
-            'categoria_medicacao_id'    => 'required',
-            'posologia'                 => 'required',
+            'nome'                      => 'required|min:3',
             'status'                    => 'required',
         ];
     }
@@ -37,9 +35,9 @@ class MedicacaoFormRequest extends Request
     public function messages()
     {
         return [
-            'nome.required'                     => 'O nome do medicamento é obrigatório!.',
-            'categotia_medicacao_id.required'   => 'A categoria do medicamento é obrigatório.',
-            'posologia.required'                => 'A posologia do medicamento é de preenchimento obrigatório.',
+            'nome.required'                 => 'O nome da categoria é de preenchimento obrigatório!.',
+            'nome.min'                      => 'O comprimento mínimo para o campo nome é de 3 caracteres!.',
+            'status.required'               => 'A definição de status é obrigatória.',
         ];
     }
 }
