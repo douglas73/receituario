@@ -44,4 +44,18 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->belongsTo(TypeUser::class, 'typeuser_id');
     }
+
+    public function fotoPerfil()
+    {
+        $myPhoto = $this->photo;
+        if($this->photo == '')
+        {
+            $myPhoto = '1211211211211111121212123343343';
+        }
+        $dirPhoto       =   'img/profiles/'.$myPhoto;
+        $defautPhoto    =   'img/profiles/defautPhoto.png';
+        return file_exists($dirPhoto) ? asset($dirPhoto) : asset($defautPhoto);
+
+    }
+
 }

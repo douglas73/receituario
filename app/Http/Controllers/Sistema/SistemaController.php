@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Sistema;
 
 use App\Menu;
+use App\User;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
@@ -35,4 +36,14 @@ class SistemaController extends Controller
     }
 
 
+    public function autorizaUsuario($id)
+    {
+        return 'ola,  vc autorizou usuario '.$id;
+    }
+
+    public function listagem()
+    {
+        $usuarios = User::orderBy('name', 'asc')->get();
+        return view('usuarios.listagem', compact('usuarios'));
+    }
 }

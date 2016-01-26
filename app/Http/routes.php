@@ -51,6 +51,11 @@ Route::get('logout', ['as' => 'sistema.logout', 'uses'=>'Sistema\SistemaControll
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
+//autorizar usuarios
+Route::get('sistema/autorizausuario/{id}', ['as' => 'sistema.userauthorize', 'uses' => 'Sistema\SistemaController@autorizaUsuario']);
+//Listagem para usuarios para autorização
+Route::get('usuarios/listagem', ['as' => 'usuarios.listagem', 'uses' => 'Sistema\SistemaController@listagem']);
+
 
 
 ######################################

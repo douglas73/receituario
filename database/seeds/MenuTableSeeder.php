@@ -31,7 +31,7 @@ class MenuTableSeeder extends Seeder
             'rota'                          => '',
             'descricao'                     => 'Gerenciador de Receitas',
             'icone'                         => 'fa fa-book',
-            'ordem'                         => 0,
+            'ordem'                         => 1,
             'status'                        => 1,
         ]);
         $this->command->info('Grupo Menu Receitas criado com sucesso!');
@@ -76,7 +76,7 @@ class MenuTableSeeder extends Seeder
             'rota'                          => '',
             'descricao'                     => 'Gerenciador de Pacientes do sistema',
             'icone'                         => 'fa fa-bed',
-            'ordem'                         => 3,
+            'ordem'                         => 4,
             'status'                        => 1,
         ]);
         $this->command->info('Grupo Menu Pacientes criado com sucesso!');
@@ -99,7 +99,7 @@ class MenuTableSeeder extends Seeder
             'rota'                          => '',
             'descricao'                     => 'Carrega Paciente previamente gravado no sistema para criação de Receita',
             'icone'                         => 'fa fa-folder-open-o',
-            'ordem'                         => 2,
+            'ordem'                         => 4,
             'status'                        => 1,
         ]);
         $this->command->info('Item de Grupo Menu Paciente: [Informar dados temporarios] criado com sucesso!');
@@ -131,22 +131,22 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 0,
-            'nome'                          => 'Medicos',
+            'nome'                          => 'Usuarios',
             'rota'                          => '',
-            'descricao'                     => 'Gerenciador de Medicos do sistema',
-            'icone'                         => 'fa fa-medkit',
-            'ordem'                         => 4,
+            'descricao'                     => 'Gerenciador de Usuários do sistema',
+            'icone'                         => 'fa fa-users',
+            'ordem'                         => 5,
             'status'                        => 1,
         ]);
-        $this->command->info('Grupo Menu Medicos criado com sucesso!');
+        $this->command->info('Grupo Menu Usuários criado com sucesso!');
 
 
         \App\Menu::create([
             'menu_id'                       => 11,
-            'nome'                          => 'Cadastrar',
-            'rota'                          => '',
-            'descricao'                     => 'Cadastrar médicos no sistema',
-            'icone'                         => 'fa fa-plus',
+            'nome'                          => 'Autorizar / Editar',
+            'rota'                          => 'usuarios.listagem',
+            'descricao'                     => 'Autorização de Usuário no sistema',
+            'icone'                         => 'fa fa-unlock-alt',
             'ordem'                         => 1,
             'status'                        => 1,
         ]);
@@ -156,7 +156,7 @@ class MenuTableSeeder extends Seeder
             'menu_id'                       => 11,
             'nome'                          => 'Editar',
             'rota'                          => '',
-            'descricao'                     => 'Editar médicos do sistema',
+            'descricao'                     => 'Editar usuários do sistema',
             'icone'                         => 'fa fa-edit',
             'ordem'                         => 2,
             'status'                        => 1,
@@ -170,7 +170,7 @@ class MenuTableSeeder extends Seeder
             'rota'                          => '',
             'descricao'                     => 'Gerenciador de Medicamentos do sistema',
             'icone'                         => 'fa fa-user-md',
-            'ordem'                         => 1,
+            'ordem'                         => 3,
             'status'                        => 1,
         ]);
         $this->command->info('Grupo Menu Medicos criado com sucesso!');
@@ -215,7 +215,7 @@ class MenuTableSeeder extends Seeder
             'rota'                          => '',
             'descricao'                     => 'Gerenciador de Categoria de Medicamentos do sistema',
             'icone'                         => 'fa fa-tasks',
-            'ordem'                         => 1,
+            'ordem'                         => 2,
             'status'                        => 1,
         ]);
 

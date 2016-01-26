@@ -46,9 +46,9 @@ class AuthController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
+            'name'          => 'required|max:255',
+            'email'         => 'required|email|max:255|unique:users',
+            'password'      => 'required|confirmed|min:6',
         ]);
     }
 
@@ -61,9 +61,10 @@ class AuthController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'password'      => bcrypt($data['password']),
+            'status'        =>  0,
         ]);
     }
 
@@ -72,9 +73,9 @@ class AuthController extends Controller
         // DB::enableQueryLog();
         if (Auth::attempt(
                 [
-                    'email' => $request->email,
-                    'password' => $request->password,
-                    //  'active' => 1
+                    'email'     => $request->email,
+                    'password'  => $request->password,
+                    'status'    => 1
                 ]
         )) {
             //Grava mensagem de boas vindas na sessão....
@@ -82,16 +83,16 @@ class AuthController extends Controller
             // Authentication passed...
             return redirect()->intended('home');
         }else{
-           // dd(DB::getQueryLog());
+
             $rules = [
                 'email'     => 'required|email',
-                'password'  => 'required'
+                'password'  => 'required',
             ];
 
             $messages = [
                 'email.required'    => 'O campo E-mail é obrigatório',
                 'email.email'       => 'O campo e-mail esta em um formatio inválido (Não é um e-mail)',
-                'password.required' => 'O campo senha é obrigatório'
+                'password.required' => 'O campo senha é obrigatório',
             ];
 
             $validator = Validator::make($request->all(),$rules,$messages);
@@ -100,6 +101,7 @@ class AuthController extends Controller
                 ->withErrors($validator)
                 ->withInput()
                 ->with('messages', 'Erro ao iniciar sessão');
+
         }
     }
 
@@ -148,6 +150,7 @@ class AuthController extends Controller
             ->with("message", "<p>Usuário ".$request->name." cadastrado com sucesso!</p>");
         }
     }
+
 
     protected $redirectTo = '/douglas';
 }
