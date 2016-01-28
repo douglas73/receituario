@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TipoDocumento extends Model
+class DocumentoTipo extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'tp_documento';
+    protected $table = 'documento_tipo';
 
 
     /**

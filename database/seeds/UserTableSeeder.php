@@ -22,6 +22,7 @@ class UserTableSeeder extends Seeder
             'email'     => 'douglas73@gmail.com',
             'photo'     => 'douglas.jpg',
             'password'  => bcrypt('123'),
+            'status'    => 1
         ]);
         // Exibe uma informação no console durante o processo de seed
         $this->command->info('Usuário Douglas Oliveira,  criado com sucesso!!!');
@@ -32,6 +33,7 @@ class UserTableSeeder extends Seeder
             'email'     => 'tatacesj@gmail.com',
             'photo'     => 'andreia.jpg',
             'password'  => bcrypt('123'),
+            'status'    => 1
         ]);
         // Exibe uma informação no console durante o processo de seed
         $this->command->info('Usuário Andreia Ribeiro,  criado com sucesso!!!');
@@ -42,6 +44,7 @@ class UserTableSeeder extends Seeder
             'email'     => 'proliberal@proliberal.com.br',
             'photo'     => 'visitante.jpg',
             'password'  => bcrypt('123'),
+            'status'    => 1
         ]);
 
         // Exibe uma informação no console durante o processo de seed

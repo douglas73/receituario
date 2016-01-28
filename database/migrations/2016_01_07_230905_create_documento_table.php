@@ -14,7 +14,7 @@ class CreateDocumentoTable extends Migration
     {
         Schema::create('documento', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('tp_documento_id');
+            $table->integer('documento_tipo_id');
             $table->integer('paciente_id');
             $table->integer('medico_id');
             $table->text('introducao')->nullable();

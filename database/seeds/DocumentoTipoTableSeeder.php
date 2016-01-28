@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class TipoDocumentoTableSeeder extends Seeder
+class DocumentoTipoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,23 +12,23 @@ class TipoDocumentoTableSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('tp_documento')->truncate();
+        DB::table('documento_tipo')->truncate();
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Receita médica',
             'status'            => 1,
         ]);
         // Exibe uma informação no console durante o processo de seed
         $this->command->info('Tipo de documento: Receita médica,  criada com sucesso!!!');
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Pedido de Exame(s)',
             'status'            => 1,
         ]);
         // Exibe uma informação no console durante o processo de seed
         $this->command->info('Tipo de documento: Pedido de Exame,  criada com sucesso!!!');
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Encaminhamento',
             'status'            => 1,
         ]);
@@ -36,7 +36,7 @@ class TipoDocumentoTableSeeder extends Seeder
         $this->command->info('Tipo de documento: Encaminhamento,  criada com sucesso!!!');
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Justificativa de dispensa médica',
             'status'            => 1,
         ]);
@@ -44,7 +44,7 @@ class TipoDocumentoTableSeeder extends Seeder
         $this->command->info('Tipo de documento: Justificativa de dispensa médica,  criada com sucesso!!!');
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Atestado Admissional',
             'status'            => 1,
         ]);
@@ -52,7 +52,7 @@ class TipoDocumentoTableSeeder extends Seeder
         $this->command->info('Tipo de documento: Atestado Admissional,  criada com sucesso!!!');
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Atestado Demissional',
             'status'            => 1,
         ]);
@@ -60,7 +60,7 @@ class TipoDocumentoTableSeeder extends Seeder
         $this->command->info('Tipo de documento: Atestado Demissional,  criada com sucesso!!!');
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Atestado de Afastamento',
             'status'            => 1,
         ]);
@@ -68,7 +68,7 @@ class TipoDocumentoTableSeeder extends Seeder
         $this->command->info('Tipo de documento: Atestado de Afastamento,  criada com sucesso!!!');
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Atestado de Comparecimento',
             'status'            => 1,
         ]);
@@ -77,7 +77,7 @@ class TipoDocumentoTableSeeder extends Seeder
 
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Atestado de Portador de Doenças',
             'status'            => 1,
         ]);
@@ -85,7 +85,7 @@ class TipoDocumentoTableSeeder extends Seeder
         $this->command->info('Tipo de documento: Atestado de Portador de Doenças,  criada com sucesso!!!');
 
 
-        \App\TipoDocumento::create([
+        \App\DocumentoTipo::create([
             'nome'              => 'Atestado de Perícia Médica',
             'status'            => 1,
         ]);

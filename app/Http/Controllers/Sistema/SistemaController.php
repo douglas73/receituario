@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Sistema;
 
+use App\Documento;
 use App\Menu;
 use App\User;
 use Illuminate\Http\Request;
@@ -24,7 +25,6 @@ class SistemaController extends Controller
 
     public function home()
     {
-        //dd(Auth::user()->tipo->nome);
         return view('sistema.home');
     }
 

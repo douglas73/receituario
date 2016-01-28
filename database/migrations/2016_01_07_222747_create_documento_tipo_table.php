@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTpDocumentoTable extends Migration
+class CreateDocumentoTipoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateTpDocumentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('tp_documento', function (Blueprint $table) {
+        Schema::create('documento_tipo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nome', 100);
             $table->integer('status');
@@ -28,6 +28,6 @@ class CreateTpDocumentoTable extends Migration
      */
     public function down()
     {
-        Schema::drop('tp_documento');
+        Schema::drop('documento_tipo');
     }
 }

@@ -15,7 +15,7 @@ class PacienteTableSeeder extends Seeder
         DB::table('paciente')->truncate();
 
         \App\Paciente::create([
-            'nome'              => 'Josefino Silva Garibaldi',
+            'nome'              => 'Visitante',
             'sexo'              => 'masculino',
             'dtnascimento'      => '1977-01-20',
             'profissao'         => 'Pintor',

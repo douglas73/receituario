@@ -21,5 +21,22 @@ class Documento extends Model
      *
      * @var array
      */
-    protected $fillable = ['tp_documento_id', 'paciente_id', 'medico_id','introducao','fechamento','impressoes','status'];
+    protected $fillable = ['documento_tipo_id', 'paciente_id', 'medico_id','introducao','fechamento','impressoes','status'];
+
+    public function tipo()
+    {
+        return $this->belongsTo(DocumentoTipo::class, 'documento_tipo_id');
+    }
+
+    public function medico()
+    {
+        return $this->hasOne('App\User', 'id', 'medico_id');
+    }
+
+
+    public function paciente()
+    {
+        return $this->hasOne('App\Paciente', 'id', 'paciente_id');
+    }
+
 }
