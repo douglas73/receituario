@@ -11,7 +11,7 @@
         <a href="{{ $menu->rota ? route($menu->rota) : '' }}"><span>{{ $menu->nome }}</span> <i class="fa {{ $menu->icone }} pull-right"></i></a>
         <ul class="treeview-menu">
             @foreach($menu->filhos as $filhos)
-                <li><a href="{{ $filhos->rota ? route($filhos->rota) : '' }}"><i class="{{ $filhos->icone }}"></i>{{$filhos->nome}}</a></li>
+                <li><a href="{{ $filhos->rota ? route($filhos->rota) : '' }}"><i class="{{ $filhos->icone }}" title="{{ Route::currentRouteName() }}"></i>{{$filhos->nome}}</a></li>
             @endforeach
         </ul>
     </li>

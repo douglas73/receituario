@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Route;
 
 class SistemaController extends Controller
 {
@@ -25,6 +26,15 @@ class SistemaController extends Controller
 
     public function home()
     {
+        /**
+         * TODO....
+         *
+         * Nome da rota atual
+         *
+         * USAR para definir classe ativa nos itens de menu.....     Route::currentRouteName()
+         *
+         */
+
         return view('sistema.home');
     }
 

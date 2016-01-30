@@ -62,11 +62,11 @@ Route::get('usuarios/listagem', ['as' => 'usuarios.listagem', 'uses' => 'Sistema
 # Medicamentos
 ######################################
 Route::group(['prefix' => 'medicacao'], function () {
-    Route::get('listagem',      ['as' => 'medicacao.index',     'uses' => 'MedicacaoController@index']);
-    Route::get('cadastro',      ['as' => 'medicacao.create',    'uses' => 'MedicacaoController@create']);
-    Route::post('store',        ['as' => 'medicacao.store',     'uses' => 'MedicacaoController@store']);
-    Route::get('edit/{id}',     ['as' => 'medicacao.edit',      'uses' => 'MedicacaoController@edit']);
-    Route::post('update/{id}',  ['as' => 'medicacao.update',      'uses' => 'MedicacaoController@update']);
+    Route::get('listagem',      ['as' => 'medicacao.index',     'uses' => 'Medicacao\MedicacaoController@index']);
+    Route::get('cadastro',      ['as' => 'medicacao.create',    'uses' => 'Medicacao\MedicacaoController@create']);
+    Route::post('store',        ['as' => 'medicacao.store',     'uses' => 'Medicacao\MedicacaoController@store']);
+    Route::get('edit/{id}',     ['as' => 'medicacao.edit',      'uses' => 'Medicacao\MedicacaoController@edit']);
+    Route::post('update/{id}',  ['as' => 'medicacao.update',    'uses' => 'Medicacao\MedicacaoController@update']);
 
 });
 
@@ -74,8 +74,20 @@ Route::group(['prefix' => 'medicacao'], function () {
 # Categoria de Medicamentos
 ######################################
 Route::group(['prefix' => 'catmedicacao'], function () {
-    Route::get('listagem',      ['as' => 'catmedicacao.index',     'uses' => 'CatMedicacaoController@index']);
-    Route::get('cadastro',      ['as' => 'catmedicacao.create',    'uses' => 'CatMedicacaoController@create']);
-    Route::get('edit/{id}',     ['as' => 'catmedicacao.edit',      'uses' => 'CatMedicacaoController@edit']);
-    Route::post('update/{id}',  ['as' => 'catmedicacao.update',    'uses' => 'CatMedicacaoController@update']);
+    Route::get('listagem',      ['as' => 'catmedicacao.index',     'uses' => 'Catmedicacao\CatMedicacaoController@index']);
+    Route::get('cadastro',      ['as' => 'catmedicacao.create',    'uses' => 'Catmedicacao\CatMedicacaoController@create']);
+    Route::post('store',        ['as' => 'catmedicacao.store',     'uses' => 'Catmedicacao\CatMedicacaoController@store']);
+    Route::get('edit/{id}',     ['as' => 'catmedicacao.edit',      'uses' => 'Catmedicacao\CatMedicacaoController@edit']);
+    Route::post('update/{id}',  ['as' => 'catmedicacao.update',    'uses' => 'Catmedicacao\CatMedicacaoController@update']);
+});
+
+######################################
+# Categoria de Pacientes
+######################################
+Route::group(['prefix' => 'paciente'], function () {
+    Route::get('listagem',      ['as' => 'paciente.index',     'uses' => 'Paciente\PacienteController@index']);
+    Route::get('cadastro',      ['as' => 'paciente.create',    'uses' => 'Paciente\PacienteController@create']);
+    Route::post('store',        ['as' => 'paciente.store',     'uses' => 'Paciente\PacienteController@store']);
+    Route::get('edit/{id}',     ['as' => 'paciente.edit',      'uses' => 'Paciente\PacienteController@edit']);
+    Route::post('update/{id}',  ['as' => 'paciente.update',    'uses' => 'Paciente\PacienteController@update']);
 });

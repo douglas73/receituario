@@ -29,8 +29,7 @@
                 <div class="box-body">
                     Bemvindo {{ Auth::user()->name }}!
 
-
-                    <p>{{ Auth::user()->fotoPerfil() }}</p>
+                     <p>{{ Auth::user()->fotoPerfil() }}</p>
 
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Medicacao;
 
 use App\CatMedicacao;
 use App\Medicacao;
@@ -84,10 +84,7 @@ class MedicacaoController extends Controller
         $categorias     = CatMedicacao::all();
         $medicacao      =  Medicacao::findOrFail((int) $id);
         $idReg          = $id;
-       //  return view('medicacao/edit', compact('medicacao', 'categorias'));
-
         return view('medicacao.edicao', compact('categorias','medicacao','idReg'));
-         // dd($medicacao);
     }
 
     /**
@@ -113,9 +110,6 @@ class MedicacaoController extends Controller
         }
         session()->forget('idMedicacao');
         return redirect('medicacao/listagem');
-
-
-
     }
 
     /**

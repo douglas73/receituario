@@ -102,13 +102,14 @@ class MenuTableSeeder extends Seeder
             'ordem'                         => 4,
             'status'                        => 1,
         ]);
+
         $this->command->info('Item de Grupo Menu Paciente: [Informar dados temporarios] criado com sucesso!');
 
 
         \App\Menu::create([
             'menu_id'                       => 6,
             'nome'                          => 'Cadastrar Paciente',
-            'rota'                          => '',
+            'rota'                          => 'paciente.create',
             'descricao'                     => 'Gravar paciente no sistema para criaçaõ de receitas',
             'icone'                         => 'fa fa-plus-square-o',
             'ordem'                         => 3,
@@ -120,7 +121,7 @@ class MenuTableSeeder extends Seeder
         \App\Menu::create([
             'menu_id'                       => 6,
             'nome'                          => 'Editar Paciente',
-            'rota'                          => '',
+            'rota'                          => 'paciente.index',
             'descricao'                     => 'Carrega Paciente previamente gravado no sistema para edição',
             'icone'                         => 'fa fa-folder-open-o',
             'ordem'                         => 4,
@@ -254,9 +255,6 @@ class MenuTableSeeder extends Seeder
             'status'                        => 1,
         ]);
         $this->command->info('Item de Grupo Menu Medicamentos: [Edição] criado com sucesso!');
-
-
-
 
     }
 }

@@ -28,13 +28,13 @@
 
                             <div class="box-body">
                                 <div class="form-group">
-                                    <label for="nome" class="col-sm-2 control-label">Nome</label>
+                                    <label for="nome" class="col-sm-2 control-label">Categoria</label>
                                     <div class="col-sm-10">
                                         <input type="text" class="form-control" id="nome" name="nome" placeholder="Categoria de Medicamento" value="{{ old('nome') }}">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="nome" class="col-sm-2 control-label">Categoria</label>
+                                    <label for="nome" class="col-sm-2 control-label">Status</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" id="status" name="status">
                                                 <option value=""></option>
