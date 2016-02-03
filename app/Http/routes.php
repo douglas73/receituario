@@ -56,7 +56,18 @@ Route::get('sistema/autorizausuario/{id}', ['as' => 'sistema.userauthorize', 'us
 //Listagem para usuarios para autorização
 Route::get('usuarios/listagem', ['as' => 'usuarios.listagem', 'uses' => 'Sistema\SistemaController@listagem']);
 
+//Atualizar Perfil
+Route::post('sistema/profile/{id}',['as' => 'sistema.profile', 'uses' => 'Sistema\SistemaController@userUpdate']);
 
+
+######################################
+# Sistema
+######################################
+Route::group(['prefix' => 'sistema'], function () {
+    Route::get('profile',      ['as' => 'sistema.profile',     'uses' => 'Sistema\SistemaController@profile']);
+
+
+});
 
 ######################################
 # Medicamentos

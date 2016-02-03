@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request; //usardo para fazer o Request
 use App\User;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Validator;
 use Auth;
 use DB;
@@ -124,7 +125,7 @@ class AuthController extends Controller
             'email.email' => 'O formato do campo e-mail esta incorreto',
             'email.max' => 'O tamanho máximo do campo e-mail é de 255 caracteres',
             'email.unique' => 'Este e-mail ja existe na nossa base de dados',
-            'password.required' => 'O campo senha é obrigatóri',
+            'password.required' => 'O campo senha é obrigatório',
             'password.min' => 'O campo senha aceita no mínimo 6 caracteres',
             'password.max' => 'O campo senha aceita no máximo 18 caracteres',
             'password.confirmed' => 'O campo senha se sua confirmação não coincidem',
@@ -150,7 +151,6 @@ class AuthController extends Controller
             ->with("message", "<p>Usuário ".$request->name." cadastrado com sucesso!</p>");
         }
     }
-
 
     protected $redirectTo = '/douglas';
 }

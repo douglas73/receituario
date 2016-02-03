@@ -37,10 +37,36 @@
         }
     });
 
+    $(".douglas").click(function(event){
+        event.preventDefault();
+        var teste = $(this).attr('class');
+        $("#modal_mensagem").html('<p>Tem certeza de de deseja desbloquear o item:' + teste +' ?</p>');
+        $("#myModalLabel").html('<i class="fa fa-user"></i>Habilitar ou Desabilitar Usuário no sistema');
+
+        $("#myModal").modal();
+    });
+
 @append
 
 @section('content')
-
+        <!-- Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        </div>
+                        <div id="modal_mensagem" class="modal-body">
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
     <div class="row">
         <div class="col-lg-12">
@@ -58,7 +84,8 @@
                             <th width="15%">Tipo</th>
 
                             <th width="30%">E-mail</th>
-                            <th width="10%">Situação</th>
+                            <th width="5%">Situação</th>
+                            <th width="5%"></th>
                             <th width="5%"></th>
                             <th width="5%"></th>
                         </tr>
@@ -72,8 +99,9 @@
                                 <td>{{ $usuario->tipo->nome }}</td>
                                 <td>{{ $usuario->email }}</td>
                                 <td align="center">{!! $usuario->status == 1 ? '<i class="fa fa-unlock text-green"></i>': '<i class="fa fa-lock text-red"></i>'  !!}</td>
-                                <td><a href="{{ route('sistema.userauthorize', [$usuario->id])  }}"><span class="btn btn-block btn-default" title="Habilitar ou bloquear"><i class="fa fa-key"></i></span></a></td>
-                                <td><button class="btn btn-block btn-default" title="Excluir registro"><i class="fa fa-trash-o warning"></i></button></td>
+                                <td><a href=""><span class="btn btn-block btn-default douglas" title="Habilitar ou bloquear"><i class="fa fa-key"></i></span></a></td>
+                                <td><a href="{{ route('sistema.userauthorize', [$usuario->id])  }}"><span class="btn btn-block btn-primary" title="Editar"><i class="fa fa-edit"></i></span></a></td>
+                                <td><button class="btn btn-block btn-danger" title="Excluir registro"><i class="fa fa-trash-o warning"></i></button></td>
                             </tr>
                         @endforeach
 
@@ -82,6 +110,7 @@
                         <tr>
                             <th></th>
                             <th>Total: 000</th>
+                            <th></th>
                             <th></th>
                             <th></th>
                             <th></th>

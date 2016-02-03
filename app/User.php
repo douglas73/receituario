@@ -57,5 +57,9 @@ class User extends Model implements AuthenticatableContract,
         return file_exists($dirPhoto) ? asset($dirPhoto) : asset($defautPhoto);
 
     }
+    public function nomeCompleto()
+    {
+        return $this->name.' '.$this->lastname;
+    }
 
 }

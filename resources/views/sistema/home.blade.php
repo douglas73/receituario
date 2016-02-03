@@ -2,13 +2,15 @@
 
 
 @section('js_scripts')
-    // $("q").text('DOUGLAS ADAO');
-    // $("input[name=q]").val('douglas adão de oliveira');
 
-    BootstrapDialog.show({
-    title: 'Say-hello dialog',
-    message: 'Hi Apple!'
-    });
+
+    function explode(){
+        $("#myModal").modal();
+    }
+    setTimeout(explode, 2000);
+
+
+
 
 @append
 
@@ -48,7 +50,7 @@
                                     <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                                 </div>
                                 <div class="modal-body">
-                                    ...
+                                    <p>Ola  você esta prestes a fazer algo aqui,  deseja continuar?</p>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -83,5 +85,5 @@
                     Footer
                 </div><!-- /.box-footer-->
             </div><!-- /.box -->
-
+        </section>
 @stop

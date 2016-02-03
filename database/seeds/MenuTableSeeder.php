@@ -144,7 +144,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 11,
-            'nome'                          => 'Autorizar / Editar',
+            'nome'                          => 'Autorizar/Editar',
             'rota'                          => 'usuarios.listagem',
             'descricao'                     => 'Autorização de Usuário no sistema',
             'icone'                         => 'fa fa-unlock-alt',
@@ -155,7 +155,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 11,
-            'nome'                          => 'Editar',
+            'nome'                          => 'Listagem',
             'rota'                          => '',
             'descricao'                     => 'Editar usuários do sistema',
             'icone'                         => 'fa fa-edit',
