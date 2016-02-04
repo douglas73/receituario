@@ -64,7 +64,8 @@ Route::post('sistema/profile/{id}',['as' => 'sistema.profile', 'uses' => 'Sistem
 # Sistema
 ######################################
 Route::group(['prefix' => 'sistema'], function () {
-    Route::get('profile',      ['as' => 'sistema.profile',     'uses' => 'Sistema\SistemaController@profile']);
+    Route::get('profile',           ['as' => 'sistema.profile',     'uses' => 'Sistema\SistemaController@profile']);
+    Route::get('edituser/{id}',     ['as' => 'sistema.edituser',     'uses' => 'Sistema\SistemaController@edituser']);
 
 
 });

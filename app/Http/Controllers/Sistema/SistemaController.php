@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Sistema;
 
 use App\Documento;
 use App\Menu;
+use App\TypeUser;
 use App\User;
 use Illuminate\Http\Request;
 use Auth;
@@ -129,6 +130,13 @@ class SistemaController extends Controller
         }
 
 
+    }
+
+    function edituser()
+    {
+        $typeUserRegister = TypeUser::all();
+
+        return view('sistema/edituser', compact('typeUserRegister'));
     }
 
 }
