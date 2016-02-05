@@ -132,11 +132,13 @@ class SistemaController extends Controller
 
     }
 
-    function edituser()
+    function edituser($id)
     {
-        $typeUserRegister = TypeUser::all();
 
-        return view('sistema/edituser', compact('typeUserRegister'));
+        //dd($id);
+        $usuario = User::findOrFail($id);
+        $typeUserRegister = TypeUser::all();
+        return view('sistema/edituser', compact('typeUserRegister','usuario'));
     }
 
 }

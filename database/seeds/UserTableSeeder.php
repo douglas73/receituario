@@ -49,5 +49,18 @@ class UserTableSeeder extends Seeder
 
         // Exibe uma informação no console durante o processo de seed
         $this->command->info('Usuário Usuário Visitante,  criado com sucesso!!!');
+
+
+        \App\User::create([
+            'name'      => 'Marcos',
+            'lastname'  => 'Paixão',
+            'typeuser_id'   => 1,
+            'email'     => 'mspdapaixao@hotmail.com',
+            'photo'     => 'marcos.jpg',
+            'password'  => bcrypt('123'),
+            'status'    => 1
+        ]);
+        // Exibe uma informação no console durante o processo de seed
+        $this->command->info('Usuário Douglas Oliveira,  criado com sucesso!!!');
     }
 }

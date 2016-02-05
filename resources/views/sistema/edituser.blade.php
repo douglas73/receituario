@@ -2,6 +2,10 @@
 
 
 @section('js_scripts')
+    var varStatus ='{{ $usuario->status }}';
+    var typeUser = '{{ $usuario->typeuser_id }}'
+    $("#status").val(varStatus);
+    $("#typeuser_id").val(typeUser);
 
 @append
 
@@ -34,12 +38,12 @@
                                         <div class="form-group">
                                             <label for="name" class="col-sm-2 control-label">Nome</label>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="">
+                                                <input type="text" class="form-control" id="name" name="name" placeholder="Nome" value="{{ $usuario->name }}">
                                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                             </div>
                                             <label for="lastname" class="col-sm-2 control-label">Sobrenome</label>
                                             <div class="col-sm-4">
-                                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Sobrenome" value="">
+                                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Sobrenome" value="{{ $usuario->lastname }}">
                                                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
                                             </div>
                                         </div>
@@ -59,7 +63,7 @@
                                         <div class="form-group">
                                             <label for="email" class="col-sm-2 control-label">E-mail</label>
                                             <div class="col-sm-10">
-                                                <input type="email" id="email" name="email" class="form-control" placeholder="E-mail"  value="{{ old('email') }}">
+                                                <input type="email" id="email" name="email" class="form-control" placeholder="E-mail"  value="{{ $usuario->email }}">
                                                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                                             </div>
                                         </div>
