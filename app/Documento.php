@@ -21,7 +21,7 @@ class Documento extends Model
      *
      * @var array
      */
-    protected $fillable = ['documento_tipo_id', 'paciente_id', 'medico_id','introducao','fechamento','impressoes','status'];
+    protected $fillable = ['documento_tipo_id', 'documento_template_id','paciente_id', 'medico_id','impressoes','observacoes','status'];
 
     public function tipo()
     {
@@ -33,10 +33,19 @@ class Documento extends Model
         return $this->hasOne('App\User', 'id', 'medico_id');
     }
 
-
     public function paciente()
     {
         return $this->hasOne('App\Paciente', 'id', 'paciente_id');
+    }
+
+    public function template()
+    {
+        return $this->hasOne('App\DocumentoTemplate','id','documento_template_id');
+    }
+
+    public function conteudo()
+    {
+        return $this->hasMany('App\DocumentoConteudo', 'documento_id');
     }
 
 

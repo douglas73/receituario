@@ -37,14 +37,62 @@
         }
     });
 
-    $(".douglas").click(function(event){
+    $(".autorizacao").click(function(event){
         event.preventDefault();
-        var teste = $(this).attr('class');
-        $("#modal_mensagem").html('<p>Tem certeza de de deseja desbloquear o item:' + teste +' ?</p>');
-        $("#myModalLabel").html('<i class="fa fa-user"></i>Habilitar ou Desabilitar Usuário no sistema');
+        var Usuario = $(this).data("usuario");
 
-        $("#myModal").modal();
+        $.ajaxSetup({
+        headers:{
+        'X-CSRF-TOKEN':'{!! csrf_token() !!}'
+        }
+        });
+
+        $.ajax({
+        type: 'post',
+        url: '{{ url('sistema/userstatus')}}',
+        data: {
+            parametro: Usuario
+        },
+        dataType: "json"
+        }).done(function(data){
+
+            $("#myModalLabel").html('<i class="fa fa-user"></i>&nbsp;&nbsp;Permissão de acesso de <strong>' + data.usuario + '</strong>');
+            $("#modal_mensagem").html('<p>Atualmente,  o estado da permissão do usuário <strong>' + data.usuario + '</strong> é <strong>'+ data.status +'</strong>!</p>'
+                + '<p>Você pode alterar este estado clicando em Executar,  ou apenas em Fechar para sair</p>'
+                + '<p>Você deseja alterar a permissão deste usuário? </p>'      );
+            $("#saveButton" ).button( "option", "label", "Alterar Permissão" );
+            $("#myModal").modal();
+            return false;
+        });
+
     });
+
+    $("#saveButton").click(function(){
+        $.ajax({
+        type: 'post',
+        url: '{{ url('sistema/cp')}}',
+        data: {
+            parametro: 'execute'
+        },
+
+        // dataType: "json"
+        }).done(function(data){
+        // alert(data);
+            setTimeout(function(){
+                    $("#cancelButton" ).trigger('click');
+                    setTimeout(function(){
+                        $("#myModalLabel").html('<i class="fa fa-line-chart"></i>&nbsp;&nbsp;&nbsp;&nbsp;Resultado da operação');
+                        $("#modal_mensagem").html('<strong>' + data + '</strong>');
+                        $("#saveButton" ).hide();
+                        $("#myModal").modal();
+                        setTimeout(function(){
+                            window.location = "{{ url('usuarios/listagem')}}";
+                        },3000);
+                     },500);
+            },900);
+        });
+    });
+
 
 @append
 
@@ -61,8 +109,8 @@
                             ...
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button id="cancelButton" type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-thumbs-o-down warning"></i>&nbsp;&nbsp;Fechar</button>
+                            <button id="saveButton" type="button" class="btn btn-success"><span id="labelSaveButton"><i class="fa fa-thumbs-o-up warning"></i>&nbsp;&nbsp;Executar</span></button>
                         </div>
                     </div>
                 </div>
@@ -99,8 +147,8 @@
                                 <td>{{ $usuario->tipo->nome }}</td>
                                 <td>{{ $usuario->email }}</td>
                                 <td align="center">{!! $usuario->status == 1 ? '<i class="fa fa-unlock text-green"></i>': '<i class="fa fa-lock text-red"></i>'  !!}</td>
-                                <td><a href=""><span class="btn btn-block btn-default douglas" title="Habilitar ou bloquear"><i class="fa fa-key"></i></span></a></td>
-                                <td><a href="{{ route('sistema.userauthorize', [$usuario->id])  }}"><span class="btn btn-block btn-primary" title="Editar"><i class="fa fa-edit"></i></span></a></td>
+                                <td><a href="{{ route('sistema.userauthorize', [$usuario->id])  }}" data-usuario="{{ base64_encode(\Carbon\Carbon::today().rand(1000,9999).$usuario->id) }}" class="autorizacao"><span class="btn btn-block btn-default douglas" title="Habilitar ou bloquear"><i class="fa fa-key"></i></span></a></td>
+                                <td><a href="{{ route('sistema.edituser', [$usuario->id])  }}"><span class="btn btn-block btn-primary" title="Editar"><i class="fa fa-edit"></i></span></a></td>
                                 <td><button class="btn btn-block btn-danger" title="Excluir registro"><i class="fa fa-trash-o warning"></i></button></td>
                             </tr>
                         @endforeach

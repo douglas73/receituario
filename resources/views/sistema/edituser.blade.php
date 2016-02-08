@@ -30,7 +30,7 @@
                             <div class="col-md-1"></div>
                             <div class="col-md-10">
                                 <!-- form start -->
-                                <form class="form-horizontal" action="{{URL('medicacao/update/')}}" method="post">
+                                <form class="form-horizontal" action="{{url('sistema/profile/'.$idupdateuser.'/'.base64_encode(\Carbon\Carbon::today().rand(1000,9999).'2'))}}" method="post">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <div class="box-body">
 

@@ -37,10 +37,6 @@ Route::get('principal', ['middleware' => 'auth', function() {
     return view('teste');
 }]);
 
-
-
-
-
 // Authentication routes...
  Route::get('auth/login', 'Auth\AuthController@getLogin');
  Route::post('auth/login', 'Auth\AuthController@postLogin');
@@ -57,8 +53,8 @@ Route::get('sistema/autorizausuario/{id}', ['as' => 'sistema.userauthorize', 'us
 Route::get('usuarios/listagem', ['as' => 'usuarios.listagem', 'uses' => 'Sistema\SistemaController@listagem']);
 
 //Atualizar Perfil
-Route::post('sistema/profile/{id}',['as' => 'sistema.profile', 'uses' => 'Sistema\SistemaController@userUpdate']);
-
+Route::post('sistema/profile/{id}/{tuser}',             ['as' => 'sistema.profile', 'uses' => 'Sistema\SistemaController@userUpdate']);
+// Route::post('sistema/profile/{id}/{tuser}',     ['as' => 'sistema.edituser',     'uses' => 'Sistema\SistemaController@edituser']);
 
 ######################################
 # Sistema
@@ -66,8 +62,8 @@ Route::post('sistema/profile/{id}',['as' => 'sistema.profile', 'uses' => 'Sistem
 Route::group(['prefix' => 'sistema'], function () {
     Route::get('profile',           ['as' => 'sistema.profile',     'uses' => 'Sistema\SistemaController@profile']);
     Route::get('edituser/{id}',     ['as' => 'sistema.edituser',     'uses' => 'Sistema\SistemaController@edituser']);
-
-
+    Route::post('userstatus',       ['as' => 'sistema.userstatus',     'uses' => 'Sistema\SistemaController@userstatus']);
+    Route::post('cp',               ['as' => 'sistema.cp',     'uses' => 'Sistema\SistemaController@cp']);
 });
 
 ######################################

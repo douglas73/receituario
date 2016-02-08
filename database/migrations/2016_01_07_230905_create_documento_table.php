@@ -14,11 +14,10 @@ class CreateDocumentoTable extends Migration
     {
         Schema::create('documento', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('documento_tipo_id');
             $table->integer('paciente_id');
             $table->integer('medico_id');
-            $table->text('introducao')->nullable();
-            $table->text('fechamento')->nullable();
+            $table->integer('documento_tipo_id');
+            $table->integer('documento_template_id');
             $table->float('impressoes');
             $table->integer('status');
             $table->timestamps();

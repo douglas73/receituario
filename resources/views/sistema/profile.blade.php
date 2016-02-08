@@ -84,7 +84,7 @@
                             @include('layouts.template_error_mensages_form_request')
                             @yield('validationMessages')
 
-                            <form action="{{url('sistema/profile/'.Auth::user()->id)}}" method="post">
+                            <form action="{{url('sistema/profile/'.Auth::user()->id.'/'.base64_encode(\Carbon\Carbon::today().rand(1000,9999).'1'))}}" method="post">
                                 {!! csrf_field() !!}
                                 <div class="form-group has-feedback">
                                     <input type="text" id="name" name="name" value="{{ Auth::user()->name }}" class="form-control" placeholder="Primeiro nome">

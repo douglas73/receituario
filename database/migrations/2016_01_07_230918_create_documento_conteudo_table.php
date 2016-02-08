@@ -15,8 +15,8 @@ class CreateDocumentoConteudoTable extends Migration
         Schema::create('documento_conteudo', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('documento_id');
-            $table->integer('categoria_medicacao_id');
             $table->integer('medicacao_id');
+            $table->text('observacoes');
             $table->timestamps();
             $table->softDeletes();
         });

@@ -24,6 +24,14 @@ class DocumentoConteudo extends Model
     protected $fillable = ['documento_id', 'categoria_medicacao_id', 'medicacao_id'];
 
 
+    public function medicacao()
+    {
+        // return $this->belongsTo('App\Medicacao');
+        return $this->hasOne('App\Medicacao', 'id', 'medicacao_id');
+    }
+
+
+
     /**
      * Mutator  responsável por criar um objeto dos campos datas desta model.   com isso é possível utilizar o
      * metodo ->format('d-m-Y')  no retorno de campos do tipo data, da model.
