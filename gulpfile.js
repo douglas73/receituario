@@ -21,6 +21,8 @@ elixir(function (mix) {
     mix.copy(bowerDir + 'Ionicons/fonts', 'public/fonts');
     mix.copy(bowerDir + 'Ionicons', 'public/ionicons');
     mix.copy(bowerDir + 'datatables/media', 'public/media');
+    mix.copy(bowerDir + 'tinymce', 'public/tinymce');
+    mix.copy(bowerDir + 'cropper', 'public/cropper');
 
     //Css
     mix.copy(bowerDir + 'bootstrap/dist/css/bootstrap.css', 'public/css/bootstrap.css');
@@ -30,7 +32,7 @@ elixir(function (mix) {
     mix.copy(bowerDir + 'font-awesome', 'public/font-awesome'); //verificar se tem que ficar nesta pasta mesmo...
 
     mix.copy(bowerDir + 'toastr/toastr.min.css', 'public/css/toastr.min.css');
-
+    mix.copy(bowerDir + 'cropper/dist/cropper.css', 'public/css/cropper.css');
 
 
     //Js
@@ -38,6 +40,7 @@ elixir(function (mix) {
     mix.copy(bowerDir + 'bootstrap/dist/js/bootstrap.min.js', 'public/js/bootstrap.min.js');
     mix.copy(bowerDir + 'Chart.js/Chart.js', 'public/js/Chart.js');
     mix.copy(bowerDir + 'toastr/toastr.min.js', 'public/js/toastr.min.js');
+    mix.copy(bowerDir + 'cropper/dist/cropper.js', 'public/js/cropper.js');
 
    //  mix.copy(bowerDir + 'toastr/toastr.min.js');
     //mix.copy(bowerDir + 'datatables/media/js/dataTables.bootstrap.min.js', 'public/js/dataTables.bootstrap.min.js');
@@ -50,7 +53,8 @@ elixir(function (mix) {
         'bootstrap.css',
         'font-awesome.css',
         'ionicons.css',
-        'toastr.min.css'
+        'toastr.min.css',
+        'cropper.css'
 
     ],'public/css/all.css','public/css');
 
@@ -58,7 +62,8 @@ elixir(function (mix) {
         'jquery.min.js',
         'bootstrap.min.js',
         'Chart.js',
-        'toastr.min.js'
+        'toastr.min.js',
+        'cropper.js'
     ],'public/js/all.js','public/js');
 
 

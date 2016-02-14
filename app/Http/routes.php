@@ -23,15 +23,35 @@ Route::get('registro', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@
 
 
 
+
+
+/**
+ * Inicio das rotas  de testes #################################################################
+ */
+/**
+ *   esta Rota exibe uma pagina com os icones possiveis para inclusão no template além de exibir as
+ *   funcionalidades do templates
+ */
+
+Route::get('douglas', function () {
+    // dd(bcrypt("123"));
+    $user = Auth::user();
+    return view('teste_template', compact('user'));
+});
+
 Route::get('admin', function () {
     return view('admin_template');
 });
-Route::get('douglas', function () {
 
-    // dd(bcrypt("123"));
-    $user = Auth::user();
-    return view('teste', compact('user'));
+
+Route::get('teste', function(){
+   return view('teste');
 });
+
+/**
+ * Fim das rotas  de testes #################################################################
+ */
+
 
 Route::get('principal', ['middleware' => 'auth', function() {
     return view('teste');

@@ -1,5 +1,17 @@
 @extends('layouts.template')
 
+@section('head_links_scripts')
+    {{-- TinyMce --}}
+    @include('layouts._tinyMce')
+@append
+
+
+@section('js_scripts')
+    tinymce.init({
+    selector: '.textarea',
+    language_url : '{{ asset ("tinymce/langs/pt_BR.js") }}'
+    });
+@append
 
 @section('js_scripts')
  var catId ={{ $medicacao->categoria_medicacao_id ? $medicacao->categoria_medicacao_id : '0'  }};
@@ -50,7 +62,7 @@
                                 <div class="form-group">
                                     <label for="posologia" class="col-sm-2 control-label">Posologia</label>
                                     <div class="col-sm-10">
-                                        <textarea  id="posologia" name="posologia" class="form-control" rows="3" placeholder="Entre com a posologia do medicamento">{{  $medicacao->posologia }}</textarea>
+                                        <textarea  id="posologia" name="posologia" class="form-control textarea" rows="3" placeholder="Entre com a posologia do medicamento">{{  $medicacao->posologia }}</textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">

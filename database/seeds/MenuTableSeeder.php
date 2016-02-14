@@ -37,14 +37,14 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 0,
-            'nome'                          => 'Receitas',
+            'nome'                          => 'Documentos',
             'rota'                          => '',
-            'descricao'                     => 'Gerenciador de Receitas',
+            'descricao'                     => 'Gerenciador de Documentos',
             'icone'                         => 'fa fa-book',
             'ordem'                         => 2,
             'status'                        => 1,
         ]);
-        $this->command->info('Grupo Menu Receitas criado com sucesso!');
+        $this->command->info('Grupo Menu Documentos criado com sucesso!');
 
         \App\Menu::create([
             'menu_id'                       => 0,
@@ -99,39 +99,39 @@ class MenuTableSeeder extends Seeder
          *      Assim,  se o item tem a ordem  1,   seu sub-item terá menu_id = 1.
          */
 
-        #Item de menu Receitas (ordem 2, deve ter menu_id = 2)
+        #Item de menu Documentos (ordem 2, deve ter menu_id = 2)
         \App\Menu::create([
             'menu_id'                       => 2,
-            'nome'                          => 'Nova Receita',
+            'nome'                          => 'Novo Documento',
             'rota'                          => '',
-            'descricao'                     => 'Criar nova Receita',
+            'descricao'                     => 'Criar novo Documento',
             'icone'                         => 'fa fa-stethoscope',
             'ordem'                         => 1,
             'status'                        => 1,
         ]);
-        $this->command->info('Grupo Menu Receitas criado com sucesso!');
+        $this->command->info('Item do Grupo Menu Documentos criado com sucesso!');
 
         \App\Menu::create([
             'menu_id'                       => 2,
-            'nome'                          => 'Carregar Receita',
+            'nome'                          => 'Carregar Documento',
             'rota'                          => '',
-            'descricao'                     => 'Carrega receita previamente gravada no sistema',
+            'descricao'                     => 'Carrega documento previamente gravado no sistema',
             'icone'                         => 'fa fa-folder-open',
             'ordem'                         => 2,
             'status'                        => 1,
         ]);
-        $this->command->info('Item de Grupo Menu Receitas: [Carrega Receita] criado com sucesso!');
+        $this->command->info('Item de Grupo Menu Documentos: [Carrega Documento] criado com sucesso!');
 
         \App\Menu::create([
             'menu_id'                       => 2,
-            'nome'                          => 'Editar Receita',
+            'nome'                          => 'Editar Documento',
             'rota'                          => '',
-            'descricao'                     => 'Edição de receita previamente gravada no sistema',
+            'descricao'                     => 'Edição de documento previamente gravada no sistema',
             'icone'                         => 'fa fa-edit',
             'ordem'                         => 3,
             'status'                        => 1,
         ]);
-        $this->command->info('Item de Grupo Menu Receitas: [Carrega Receita] criado com sucesso!');
+        $this->command->info('Item de Grupo Menu Documento: [Carregar Documento] criado com sucesso!');
 
 
         #Item de menu Categoria de Medicação (ordem 3, deve ter menu_id = 3)

@@ -64,7 +64,7 @@
                             <tr>
                                 <td>{{ $medicamento->categoria->nome }}</td>
                                 <td>{{ $medicamento->nome }}</td>
-                                <td>{{ $medicamento->posologia }}</td>
+                                <td>{!! $medicamento->posologia !!}</td>
                                 <td><a href="{{ route('medicacao.edit', [$medicamento->id])  }}"><span class="btn btn-block btn-default" title="Editar registro"><i class="fa fa-edit"></i></span></a></td>
                                 <td><button class="btn btn-block btn-default" title="Excluir registro"><i class="fa fa-trash-o warning"></i></button></td>
                             </tr>

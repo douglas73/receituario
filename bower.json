@@ -22,6 +22,9 @@
     "AdminLTE": "admin-lte#~2.3.2",
     "iCheck": "icheck#~1.0.2",
     "Ionicons": "ionicons#~2.0.1",
-    "datatables": "DataTables#~1.10.10"
+    "datatables": "DataTables#~1.10.10",
+    "tinymce": "~4.3.3",
+    "cropper": "~2.2.5",
+    "toastr": "^2.1.2"
   }
 }
