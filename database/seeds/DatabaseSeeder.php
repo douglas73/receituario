@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeUserTableSeeder::class);
         $this->call(MenuTableSeeder::class);
         $this->call(DocumentoTemplateTableSeeder::class);
+        factory('App\Paciente', 100)->create();
 
         Model::reguard();
     }
