@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "93f11acd7845010199156b8ce85995a4",
-    "content-hash": "0a153903ee6b47a3d1f1b766aa4d559d",
+    "hash": "ae4335b51705c24773366524fb3602bc",
+    "content-hash": "90a52b2bee88c1de81b8c460350cea62",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -409,6 +409,48 @@
             "time": "2015-12-05 17:17:57"
         },
         {
+            "name": "kendu/l5-mpdf",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kendu/l5-mpdf.git",
+                "reference": "da49fef2b6bdf12e0a393daedee85c72490f7f62"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/kendu/l5-mpdf/zipball/da49fef2b6bdf12e0a393daedee85c72490f7f62",
+                "reference": "da49fef2b6bdf12e0a393daedee85c72490f7f62",
+                "shasum": ""
+            },
+            "require": {
+                "mpdf/mpdf": "5.7.*",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Kendu\\Mpdf": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache 2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Kendu",
+                    "email": "info@kendu.si"
+                }
+            ],
+            "description": "mPDF wrapper for Laravel 5",
+            "keywords": [
+                "laravel",
+                "mpdf",
+                "pdf"
+            ],
+            "time": "2015-07-16 07:31:42"
+        },
+        {
             "name": "laravel/framework",
             "version": "v5.1.30",
             "source": {
@@ -538,16 +580,16 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.16",
+            "version": "1.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "183e1a610664baf6dcd6fceda415baf43cbdc031"
+                "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/183e1a610664baf6dcd6fceda415baf43cbdc031",
-                "reference": "183e1a610664baf6dcd6fceda415baf43cbdc031",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
+                "reference": "02f5b6c9a8b9278c8381e3361e7bd9d641c740ca",
                 "shasum": ""
             },
             "require": {
@@ -560,8 +602,7 @@
                 "ext-fileinfo": "*",
                 "mockery/mockery": "~0.9",
                 "phpspec/phpspec": "^2.2",
-                "phpspec/prophecy-phpunit": "~1.0",
-                "phpunit/phpunit": "~4.8"
+                "phpunit/phpunit": "~4.8 || ~5.0"
             },
             "suggest": {
                 "ext-fileinfo": "Required for MimeType",
@@ -618,7 +659,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2015-12-19 20:16:43"
+            "time": "2016-02-19 15:35:38"
         },
         {
             "name": "monolog/monolog",
@@ -699,16 +740,16 @@
         },
         {
             "name": "mpdf/mpdf",
-            "version": "v6.0.0",
+            "version": "v5.7.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpdf/mpdf.git",
-                "reference": "a15743d030ce3b5b7be36c6e83f76589b27c3f2c"
+                "reference": "f9a374c7ea975ce8c795cec4dfd17ef55addac9c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/a15743d030ce3b5b7be36c6e83f76589b27c3f2c",
-                "reference": "a15743d030ce3b5b7be36c6e83f76589b27c3f2c",
+                "url": "https://api.github.com/repos/mpdf/mpdf/zipball/f9a374c7ea975ce8c795cec4dfd17ef55addac9c",
+                "reference": "f9a374c7ea975ce8c795cec4dfd17ef55addac9c",
                 "shasum": ""
             },
             "require": {
@@ -738,7 +779,7 @@
                 "php",
                 "utf-8"
             ],
-            "time": "2015-03-01 10:27:49"
+            "time": "2014-12-14 18:32:11"
         },
         {
             "name": "mtdowling/cron-expression",
@@ -3193,7 +3234,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "kendu/l5-mpdf": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

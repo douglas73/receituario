@@ -145,6 +145,8 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
+        'Kendu\Mpdf\ServiceProvider',
+
 
     ],
 
@@ -195,6 +197,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Form'      => Illuminate\Html\FormFacade::class,
+        'PDF' => 'Kendu\Mpdf\Facades\Pdf',
 
     ],
 

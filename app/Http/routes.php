@@ -48,6 +48,28 @@ Route::get('teste', function(){
    return view('teste');
 });
 
+
+Route::get('pdf', function(){
+    $medicacao = App\Medicacao::orderBy('nome', 'asc')->get();
+    $mpdf = new mPDF('',    // mode - default ''
+         '',    // format - A4, for example, default ''
+         0,     // font size - default 0
+         '',    // default font family
+         15,    // margin_left
+         15,    // margin right
+         16,     // margin top
+         16,    // margin bottom
+         9,     // margin header
+         9,     // margin footer
+         'L');  // L - landscape, P - portrait
+
+
+   //  $mpdf->WriteHTML('<p>Hallo World</p>');
+    $mpdf->WriteHTML(view('medicacao.listagem', compact('medicacao'))->render());
+    $mpdf->Output();
+    return 'Pronto';
+});
+
 /**
  * Fim das rotas  de testes #################################################################
  */
