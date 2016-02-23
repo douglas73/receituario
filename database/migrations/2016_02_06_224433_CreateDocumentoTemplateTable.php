@@ -16,13 +16,13 @@ class CreateDocumentoTemplateTable extends Migration
             $table->increments('id');
             $table->integer('documento_tipo_id');
             $table->text('cabecalho')->nullable();
-            $table->string('cabecalho_imagem',200);
+            $table->string('cabecalho_imagem',200)->nullable();
             $table->text('texto_central')->nullable();
             $table->string('texto_central_imagem',200)->nullable();
             $table->text('rodape')->nullable();
             $table->string('rodape_imagem',200)->nullable();
-            $table->text('ps')->nullable();
-            $table->string('termos',200);
+            $table->text('ps')->nullable()->nullable();
+            $table->string('termos',200)->nullable();
             $table->integer('status');
             $table->timestamps();
         });

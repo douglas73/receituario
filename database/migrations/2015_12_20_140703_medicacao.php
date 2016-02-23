@@ -16,7 +16,7 @@ class Medicacao extends Migration
             $table->increments('id');
             $table->integer('categoria_medicacao_id');
             $table->string('nome',100);
-            $table->text('posologia',100);
+            $table->text('posologia');
             $table->integer('status');
             $table->timestamps();
             $table->softDeletes();

@@ -15,6 +15,7 @@ class DocumentoTemplateTableSeeder extends Seeder
         DB::table('documento_template')->truncate();
 
         \App\DocumentoTemplate::create([
+            'documento_tipo_id' => 1,
             'cabecalho'         => '######## Cabeçalho do documento ##########',
             'texto_central'     => '#####  TEXTO CENTRAL DO DOCUMENTO ######',
             'texto_central'     => '#####  TEXTO CENTRAL DO DOCUMENTO ######',
