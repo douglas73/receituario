@@ -59,14 +59,14 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 0,
-            'nome'                          => 'Layouts',
+            'nome'                          => 'Templates',
             'rota'                          => '',
-            'descricao'                     => 'Gerenciador de Layouts dos documentos',
+            'descricao'                     => 'Gerenciador de Template dos documentos',
             'icone'                         => 'fa fa-font',
             'ordem'                         => 4,
             'status'                        => 1,
         ]);
-        $this->command->info('Grupo Menu Medicos criado com sucesso!');
+        $this->command->info('Grupo Menu Documentos (template) criado com sucesso!');
 
 
         \App\Menu::create([
@@ -211,7 +211,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 4,
-            'nome'                          => 'Layout Padrão',
+            'nome'                          => 'Template Padrão',
             'rota'                          => 'catmedicacao.index',
             'descricao'                     => 'Escolha dos layouts padrão para cada documento',
             'icone'                         => 'fa fa-star',

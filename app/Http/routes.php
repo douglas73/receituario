@@ -109,6 +109,17 @@ Route::group(['prefix' => 'sistema'], function () {
 });
 
 ######################################
+# DocumentoTemplate
+######################################
+Route::group(['prefix' => 'documentotemplate'], function () {
+    Route::get('listagem',      ['as' => 'documentotemplate.index',     'uses' => 'documentotemplate\DocumentoTemplateController@index']);
+    Route::get('cadastro',      ['as' => 'documentotemplate.create',    'uses' => 'documentotemplate\DocumentoTemplateController@create']);
+    Route::post('store',        ['as' => 'documentotemplate.store',     'uses' => 'DocumentoTemplate\DocumentoTemplateController@store']);
+    Route::get('edit/{id}',     ['as' => 'documentotemplate.edit',      'uses' => 'DocumentoTemplate\DocumentoTemplateController@edit']);
+    Route::post('update/{id}',  ['as' => 'documentotemplate.update',    'uses' => 'DocumentoTemplate\DocumentoTemplateController@update']);
+
+});
+######################################
 # Medicamentos
 ######################################
 Route::group(['prefix' => 'medicacao'], function () {
