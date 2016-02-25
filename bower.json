@@ -25,6 +25,7 @@
     "datatables": "DataTables#~1.10.10",
     "tinymce": "~4.3.3",
     "cropper": "~2.2.5",
-    "toastr": "^2.1.2"
+    "toastr": "^2.1.2",
+    "blueimp-file-upload": "jquery-file-upload#^9.12.0"
   }
 }

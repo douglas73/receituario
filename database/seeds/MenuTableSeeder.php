@@ -189,20 +189,19 @@ class MenuTableSeeder extends Seeder
         \App\Menu::create([
             'menu_id'                       => 4,
             'nome'                          => 'Listagem',
-            'rota'                          => 'catmedicacao.index',
-            'descricao'                     => 'Listagem dos layouts cadastrados',
+            'rota'                          => 'documentotemplate.index',
+            'descricao'                     => 'Listagem dos Templates cadastrados',
             'icone'                         => 'fa fa-list-ol',
             'ordem'                         => 1,
             'status'                        => 1,
         ]);
-        $this->command->info('Item de Grupo Menu Layouts: [Layouts] criado com sucesso!');
-
+        $this->command->info('Item de Grupo Menu Layouts: [Listagem] criado com sucesso!');
 
         \App\Menu::create([
             'menu_id'                       => 4,
             'nome'                          => 'Cadastro',
-            'rota'                          => 'catmedicacao.index',
-            'descricao'                     => 'Cadastro dos layouts',
+            'rota'                          => 'documentotemplate.cadastro',
+            'descricao'                     => 'Cadastro dos Templates',
             'icone'                         => 'fa fa-plus-square-o',
             'ordem'                         => 2,
             'status'                        => 1,

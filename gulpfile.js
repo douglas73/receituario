@@ -23,6 +23,9 @@ elixir(function (mix) {
     mix.copy(bowerDir + 'datatables/media', 'public/media');
     mix.copy(bowerDir + 'tinymce', 'public/tinymce');
     mix.copy(bowerDir + 'cropper', 'public/cropper');
+    mix.copy(bowerDir + 'blueimp-canvas-to-blob', 'public/blueimp-canvas-to-blob');
+    mix.copy(bowerDir + 'blueimp-file-upload', 'public/blueimp-file-upload');
+    mix.copy(bowerDir + 'blueimp-load-image', 'public/blueimp-load-image');
 
     //Css
     mix.copy(bowerDir + 'bootstrap/dist/css/bootstrap.css', 'public/css/bootstrap.css');

@@ -34,6 +34,8 @@ class DocumentoTemplateController extends Controller
     public function create()
     {
         //
+        return view('documentotemplate.cadastro');
+
     }
 
     /**
