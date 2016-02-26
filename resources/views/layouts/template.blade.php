@@ -226,10 +226,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
+            <!--
             <h1>
                 Page Header
                 <small>Optional description</small>
-            </h1>
+            </h1> -->
+            <!-- Informaçõs do Header -->
+            {!! $headerInfo !!}
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
                 <li class="active">Here</li>
@@ -250,7 +253,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             Versão atual 1.0.0 | Última atualização: 20/02/2016
         </div>
         <!-- Default to the left -->
-        <strong>Copyright © 2015 <a href="#">Company</a>.</strong> All rights reserved.
+        <strong>  Copyright © 2015 <a href="#">Company</a>.</strong> All rights reserved.
     </footer>
 
 </div><!-- ./wrapper -->

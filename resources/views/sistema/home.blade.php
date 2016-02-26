@@ -33,6 +33,9 @@
 
                      <p>{{ Auth::user()->fotoPerfil() }}</p>
 
+                    <p>Descrição desta Página: {{ $headerInfo }}</p>
+
+
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
                         Launch demo modal 1

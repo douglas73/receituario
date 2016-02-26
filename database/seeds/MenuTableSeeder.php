@@ -200,7 +200,7 @@ class MenuTableSeeder extends Seeder
         \App\Menu::create([
             'menu_id'                       => 4,
             'nome'                          => 'Cadastro',
-            'rota'                          => 'documentotemplate.cadastro',
+            'rota'                          => 'documentotemplate.create',
             'descricao'                     => 'Cadastro dos Templates',
             'icone'                         => 'fa fa-plus-square-o',
             'ordem'                         => 2,
@@ -311,7 +311,7 @@ class MenuTableSeeder extends Seeder
         #Item de menu Usuários (ordem 6, deve ter menu_id = 6)
         \App\Menu::create([
             'menu_id'                       => 7,
-            'nome'                          => 'Autorizar/Editar',
+            'nome'                          => 'Autorização | Edição de usuários',
             'rota'                          => 'usuarios.listagem',
             'descricao'                     => 'Autorização de Usuário no sistema',
             'icone'                         => 'fa fa-unlock-alt',

@@ -6,15 +6,18 @@ use App\Documento;
 use App\Menu;
 use App\TypeUser;
 use App\User;
+use App\Traits\PageHeaderTrait;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class SistemaController extends Controller
 {
+    use PageHeaderTrait;
     public function __construct()
     {
         $this->middleware('auth');
@@ -36,15 +39,18 @@ class SistemaController extends Controller
          * USAR para definir classe ativa nos itens de menu.....     Route::currentRouteName()
          *
          */
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
 
-        return view('sistema.home');
+        return view('sistema.home', compact('headerInfo'));
     }
 
     public function menu()
     {
         $menus = Menu::where('menu_id', 0)->orderBy('ordem', 'asc')->get();
         return view('sistema.menu', compact('menus'));
-        // return view('sistema.menu');
     }
 
 
@@ -55,8 +61,13 @@ class SistemaController extends Controller
 
     public function listagem()
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+
         $usuarios = User::orderBy('name', 'asc')->get();
-        return view('usuarios.listagem', compact('usuarios'));
+        return view('usuarios.listagem', compact('usuarios', 'headerInfo'));
     }
 
     public function profile()

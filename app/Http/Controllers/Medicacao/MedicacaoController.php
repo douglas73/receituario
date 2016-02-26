@@ -4,12 +4,16 @@ namespace App\Http\Controllers\Medicacao;
 
 use App\CatMedicacao;
 use App\Medicacao;
+use App\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Session;
 // use App\Http\Requests;
+use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Route;
 use App\Http\Requests\MedicacaoFormRequest;
 use App\Http\Requests\EdicaoMedicacaoFormRequest;
 use App\Http\Controllers\Controller;
+
 
 
 class MedicacaoController extends Controller
@@ -26,8 +30,12 @@ class MedicacaoController extends Controller
      */
     public function index()
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
         $medicacao = Medicacao::orderBy('nome', 'asc')->get();
-        return view('medicacao.listagem', compact('medicacao'));
+        return view('medicacao.listagem', compact('medicacao','headerinfo'));
     }
 
     /**
@@ -37,8 +45,14 @@ class MedicacaoController extends Controller
      */
     public function create()
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
         $categorias  = CatMedicacao::orderBy('nome', 'asc')->get();
-        return view('medicacao.cadastro', compact('categorias'));
+        // dd(Route::currentRouteName());
+
+        return view('medicacao.cadastro', compact('categorias','headerInfo'));
     }
 
     /**
@@ -78,13 +92,19 @@ class MedicacaoController extends Controller
      */
     public function edit($id)
     {
+
         // session(['Edicao' => 'Douglas']);
         session()->put('idMedicacao', $id);
+
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
 
         $categorias     = CatMedicacao::all();
         $medicacao      =  Medicacao::findOrFail((int) $id);
         $idReg          = $id;
-        return view('medicacao.edicao', compact('categorias','medicacao','idReg'));
+        return view('medicacao.edicao', compact('categorias','medicacao','idReg','headerInfo'));
     }
 
     /**
@@ -96,6 +116,11 @@ class MedicacaoController extends Controller
      */
     public function update(EdicaoMedicacaoFormRequest $request, $id)
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+
         if($id != session("idMedicacao"))
         {
             abort(403, 'Violação de parâmetros.');
@@ -109,7 +134,7 @@ class MedicacaoController extends Controller
             session()->flash('toastr.error', "ERRO!  Medicamento ".$request->get('nome')." NÃO foi ATUALIZADO! Por favor repita a operação");
         }
         session()->forget('idMedicacao');
-        return redirect('medicacao/listagem');
+        return redirect('medicacao/listagem', compact('headerInfo'));
     }
 
     /**
@@ -122,4 +147,5 @@ class MedicacaoController extends Controller
     {
         //
     }
+
 }

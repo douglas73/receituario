@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Paciente;
 use Carbon\Carbon;
 use App\Paciente;
 use Illuminate\Http\Request;
-
+use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Route;
 use App\Http\Requests;
 use App\Http\Requests\PacienteFormRequest;
 use App\Http\Controllers\Controller;

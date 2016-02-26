@@ -6,9 +6,12 @@ use App\DocumentoTemplate;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Route;
 
 class DocumentoTemplateController extends Controller
 {
+    use PageHeaderTrait;
 
     public function __construct()
     {
@@ -21,9 +24,13 @@ class DocumentoTemplateController extends Controller
      */
     public function index()
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
         //Listagem de templates
         $docTemplates = DocumentoTemplate::all();
-        return view('documentotemplate.listagem', compact('docTemplates'));
+        return view('documentotemplate.listagem', compact('docTemplates', 'headerInfo'));
     }
 
     /**
@@ -33,8 +40,11 @@ class DocumentoTemplateController extends Controller
      */
     public function create()
     {
-        //
-        return view('documentotemplate.cadastro');
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+        return view('documentotemplate.cadastro', compact('headerInfo'));
 
     }
 
