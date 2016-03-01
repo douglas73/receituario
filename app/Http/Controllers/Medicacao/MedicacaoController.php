@@ -18,6 +18,7 @@ use App\Http\Controllers\Controller;
 
 class MedicacaoController extends Controller
 {
+    use PageHeaderTrait;
     public function __construct()
     {
         $this->middleware('auth');
@@ -35,7 +36,7 @@ class MedicacaoController extends Controller
          */
         $headerInfo = $this->headerPageName(Route::currentRouteName());
         $medicacao = Medicacao::orderBy('nome', 'asc')->get();
-        return view('medicacao.listagem', compact('medicacao','headerinfo'));
+        return view('medicacao.listagem', compact('medicacao','headerInfo'));
     }
 
     /**

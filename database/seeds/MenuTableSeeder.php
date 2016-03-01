@@ -150,9 +150,9 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 3,
-            'nome'                          => 'Listagem',
+            'nome'                          => 'Consulta',
             'rota'                          => 'catmedicacao.index',
-            'descricao'                     => 'Listagem dos medicamentos cadastrados',
+            'descricao'                     => 'Listagem das categoria de medicamentos cadastrados',
             'icone'                         => 'fa fa-list-ol',
             'ordem'                         => 1,
             'status'                        => 1,
@@ -164,7 +164,7 @@ class MenuTableSeeder extends Seeder
             'menu_id'                       => 3,
             'nome'                          => 'Cadastro',
             'rota'                          => 'catmedicacao.create',
-            'descricao'                     => 'Cadastro dos medicamentos',
+            'descricao'                     => 'Cadastro das categorias dos medicamentos',
             'icone'                         => 'fa fa-plus-square-o',
             'ordem'                         => 2,
             'status'                        => 1,
@@ -175,7 +175,7 @@ class MenuTableSeeder extends Seeder
             'menu_id'                       => 3,
             'nome'                          => 'Edição',
             'rota'                          => 'catmedicacao.index',
-            'descricao'                     => 'Edição dos medicamentos cadastrados',
+            'descricao'                     => 'Edição das categorias dos medicamentos cadastrados',
             'icone'                         => 'fa fa-edit',
             'ordem'                         => 3,
             'status'                        => 1,
@@ -188,7 +188,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 4,
-            'nome'                          => 'Listagem',
+            'nome'                          => 'Consulta',
             'rota'                          => 'documentotemplate.index',
             'descricao'                     => 'Listagem dos Templates cadastrados',
             'icone'                         => 'fa fa-list-ol',
@@ -224,7 +224,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 5,
-            'nome'                          => 'Listagem',
+            'nome'                          => 'Consulta',
             'rota'                          => 'medicacao.index',
             'descricao'                     => 'Listagem dos medicamentos cadastrados',
             'icone'                         => 'fa fa-list-ol',
@@ -298,9 +298,9 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 6,
-            'nome'                          => 'Editar Paciente',
+            'nome'                          => 'Edição de Paciente',
             'rota'                          => 'paciente.index',
-            'descricao'                     => 'Carrega Paciente previamente gravado no sistema para edição',
+            'descricao'                     => 'Listagem de  Pacientes previamente cadastrados no sistema para edição',
             'icone'                         => 'fa fa-folder-open-o',
             'ordem'                         => 4,
             'status'                        => 1,

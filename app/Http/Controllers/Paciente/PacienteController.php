@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 
 class PacienteController extends Controller
 {
+    use PageHeaderTrait;
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +20,12 @@ class PacienteController extends Controller
      */
     public function index()
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
         $pacientes = Paciente::orderBy('nome', 'asc')->get();
-        return view('paciente.listagem', compact('pacientes'));
+        return view('paciente.listagem', compact('pacientes','headerInfo'));
     }
 
     /**
@@ -30,7 +35,11 @@ class PacienteController extends Controller
      */
     public function create()
     {
-        return view('paciente.cadastro');
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+        return view('paciente.cadastro', compact('headerInfo'));
     }
 
     /**
@@ -75,10 +84,15 @@ class PacienteController extends Controller
         // session(['Edicao' => 'Douglas']);
         session()->put('idPaciente', $id);
 
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+
         $paciente       =  Paciente::findOrFail((int) $id);
         $idReg          = $id;
         // dd($medicacao);
-        return view('paciente.edicao', compact('paciente','idReg'));
+        return view('paciente.edicao', compact('paciente','idReg','headerInfo'));
 
     }
 

@@ -6,12 +6,16 @@ use App\Medicacao;
 use App\CatMedicacao;
 use Illuminate\Http\Request;
 
+use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Route;
+
 use App\Http\Requests;
 use App\Http\Requests\CatMedicacaoFormRequest;
 use App\Http\Controllers\Controller;
 
 class CatMedicacaoController extends Controller
 {
+    use PageHeaderTrait;
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +23,14 @@ class CatMedicacaoController extends Controller
      */
     public function index()
     {
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+
         $catmedicacao = CatMedicacao::orderBy('nome', 'asc')->get();
 
-        return view('catmedicacao.listagem', compact('catmedicacao'));
+        return view('catmedicacao.listagem', compact('catmedicacao', 'headerInfo'));
     }
 
     /**
@@ -31,9 +40,11 @@ class CatMedicacaoController extends Controller
      */
     public function create()
     {
-        return view('catmedicacao.cadastro');
-
-        // dd($request->all());
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+        return view('catmedicacao.cadastro', compact('headerInfo'));
     }
 
     /**
@@ -79,9 +90,14 @@ class CatMedicacaoController extends Controller
         // session(['Edicao' => 'Douglas']);
         session()->put('idCatMedicacao', $id);
 
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+
         $categoria      =  CatMedicacao::findOrFail((int) $id);
         $idReg          = $id;
-        return view('catmedicacao.edicao', compact('categoria','idReg'));
+        return view('catmedicacao.edicao', compact('categoria','idReg','headerInfo'));
     }
 
     /**
