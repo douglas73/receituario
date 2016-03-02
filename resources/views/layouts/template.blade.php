@@ -20,6 +20,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     -->
     <link href="{{ asset("admin-lte/dist/css/skins/skin-blue.min.css")}}" rel="stylesheet" type="text/css" />
 
+    @yield('head_styles_links')
     <style>
     @yield('head_styles_scripts')
     </style>

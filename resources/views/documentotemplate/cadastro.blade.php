@@ -1,8 +1,19 @@
 @extends('layouts.template')
 
+@section('head_styles_links')
+    <link href="{{ asset("blueimp-file-upload/css/jquery.fileupload.css")}}" rel="stylesheet" type="text/css" />
+
+@append
+
+
 @section('head_links_scripts')
+
     {{-- TinyMce --}}
     @include('layouts._tinyMce')
+
+   <!-- Jquery fileupload -->
+    <script src="{{ asset ("blueimp-file-upload/js/vendor/jquery.ui.widget.js") }}" type="text/javascript"></script>
+    <script src="{{ asset ("blueimp-file-upload/js/jquery.fileupload.js") }}" type="text/javascript"></script>
 @append
 
 
