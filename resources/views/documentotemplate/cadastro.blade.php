@@ -40,23 +40,55 @@
                         @yield('validationMessages')
 
                         <!-- form start -->
-                        <form class="form-horizontal" action="{{URL('medicacao/store')}}" method="post">
+                        <form class="form-horizontal" action="{{ URL('documentotemplate/store')}}" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="box-body">
 
                                 <div class="form-group">
-                                    <label for="nome" class="col-sm-2 control-label">Nome</label>
+                                    <label for="nome" class="col-sm-2 control-label">Tipo</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome do Medicamento" value="{{ old('nome') }}">
+                                        <select name="documento_tipo_id" id="" class="form-control">
+                                        @foreach($documentoTipo as $tipo)
+                                            <option value="{{ $tipo->id }}">{{ $tipo->nome }}</option>
+                                        @endforeach
+                                        </select>
                                     </div>
                                 </div>
+                                <hr>
+
 
                                 <div class="form-group">
-                                    <label for="posologia" class="col-sm-2 control-label">Posologia</label>
+                                    <label for="posologia" class="col-sm-2 control-label">Cabeçalho</label>
                                     <div class="col-sm-10">
                                         <textarea  id="posologia" name="posologia" class="form-control textarea" rows="3" placeholder="Entre com a posologia do medicamento">{{ old('posologia') }}</textarea>
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label for="nome" class="col-sm-2 control-label">Imagem de cabeçalho</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="cabecalho_imagem" name="cabecalho_imagem">
+                                    </div>
+                                </div>
+                                <hr>
+
+                                <div class="form-group">
+                                    <label for="posologia" class="col-sm-2 control-label">Corpo</label>
+                                    <div class="col-sm-10">
+                                        <textarea  id="texto_central" name="texto_central" class="form-control textarea" rows="3" placeholder="Entre com o texto que será o corpo do documento">{{ old('posologia') }}</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="nome" class="col-sm-2 control-label">Imagem de corpo</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" class="form-control" id="texto_central_imagem" name="texto_central_imagem">
+                                    </div>
+                                </div>
+                                <hr>
+
+
+
                                 <div class="form-group">
                                     <label for="status" class="col-sm-2 control-label">Status</label>
                                     <div class="col-sm-10">

@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\DocumentoTemplate;
 
 use App\DocumentoTemplate;
+use App\DocumentoTipo;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Route;
 
 class DocumentoTemplateController extends Controller
@@ -25,7 +27,7 @@ class DocumentoTemplateController extends Controller
     public function index()
     {
         /**
-         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Tï¿½tulo da Pagina e sua descriï¿½ï¿½o no topo da mesma
          */
         $headerInfo = $this->headerPageName(Route::currentRouteName());
         //Listagem de templates
@@ -40,11 +42,13 @@ class DocumentoTemplateController extends Controller
      */
     public function create()
     {
+        $documentoTipo = DocumentoTipo::all();
+
         /**
-         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Tï¿½tulo da Pagina e sua descriï¿½ï¿½o no topo da mesma
          */
         $headerInfo = $this->headerPageName(Route::currentRouteName());
-        return view('documentotemplate.cadastro', compact('headerInfo'));
+        return view('documentotemplate.cadastro', compact('headerInfo', 'documentoTipo'));
 
     }
 
@@ -56,7 +60,28 @@ class DocumentoTemplateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        if(Input::hasFile('cabecalho_imagem')){
+
+            $arquivo = Input::file('cabecalho_imagem');
+            $arquivo->move('storage', $arquivo->getClientOriginalName());
+            echo '<img src="'.asset("storage/".$arquivo->getClientOriginalName()).'"  />';
+            echo "<br />Depois apague os arquivos de  public\storage do laravel";
+            // return 'Arquivo carregado';
+        }
+        if(Input::hasFile('texto_central_imagem')){
+
+            $arquivo = Input::file('cabecalho_imagem');
+            $arquivo->move('storage', $arquivo->getClientOriginalName());
+            echo '<img src="'.asset("storage/".$arquivo->getClientOriginalName()).'"  />';
+            echo "<br />Depois apague os arquivos de  public\storage do laravel";
+            // return 'Arquivo carregado';
+        }
+
+
+        dd($request->all());
+
+
     }
 
     /**
