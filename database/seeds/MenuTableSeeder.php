@@ -150,7 +150,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 3,
-            'nome'                          => 'Consulta',
+            'nome'                          => 'Consulta / Edição',
             'rota'                          => 'catmedicacao.index',
             'descricao'                     => 'Listagem das categoria de medicamentos cadastrados',
             'icone'                         => 'fa fa-list-ol',
@@ -171,26 +171,13 @@ class MenuTableSeeder extends Seeder
         ]);
         $this->command->info('Item de Grupo Menu Categoria de Medicação: [Cadastro] criado com sucesso!');
 
-        \App\Menu::create([
-            'menu_id'                       => 3,
-            'nome'                          => 'Edição',
-            'rota'                          => 'catmedicacao.index',
-            'descricao'                     => 'Edição das categorias dos medicamentos cadastrados',
-            'icone'                         => 'fa fa-edit',
-            'ordem'                         => 3,
-            'status'                        => 1,
-        ]);
-        $this->command->info('Item de Grupo Menu Categoria de Medicação: [Edição] criado com sucesso!');
-
-
-
         #Item de menu Medicamentos (ordem 4, deve ter menu_id = 4)
 
         \App\Menu::create([
             'menu_id'                       => 4,
-            'nome'                          => 'Consulta',
+            'nome'                          => 'Consulta / Edição',
             'rota'                          => 'documentotemplate.index',
-            'descricao'                     => 'Listagem dos Templates cadastrados',
+            'descricao'                     => 'Listagem dos Templates para consulta ou edição',
             'icone'                         => 'fa fa-list-ol',
             'ordem'                         => 1,
             'status'                        => 1,
@@ -211,7 +198,7 @@ class MenuTableSeeder extends Seeder
         \App\Menu::create([
             'menu_id'                       => 4,
             'nome'                          => 'Template Padrão',
-            'rota'                          => 'catmedicacao.index',
+            'rota'                          => 'documentotemplate.index',
             'descricao'                     => 'Escolha dos layouts padrão para cada documento',
             'icone'                         => 'fa fa-star',
             'ordem'                         => 2,
@@ -224,7 +211,7 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 5,
-            'nome'                          => 'Consulta',
+            'nome'                          => 'Consulta / Edição',
             'rota'                          => 'medicacao.index',
             'descricao'                     => 'Listagem dos medicamentos cadastrados',
             'icone'                         => 'fa fa-list-ol',
@@ -244,17 +231,6 @@ class MenuTableSeeder extends Seeder
             'status'                        => 1,
         ]);
         $this->command->info('Item de Grupo Menu Medicamentos: [Cadastro] criado com sucesso!');
-
-        \App\Menu::create([
-            'menu_id'                       => 5,
-            'nome'                          => 'Edição',
-            'rota'                          => 'medicacao.index',
-            'descricao'                     => 'Edição dos medicamentos cadastrados',
-            'icone'                         => 'fa fa-edit',
-            'ordem'                         => 3,
-            'status'                        => 1,
-        ]);
-        $this->command->info('Item de Grupo Menu Medicamentos: [Edição] criado com sucesso!');
 
 
         #Item de menu Pacientes (ordem 5, deve ter menu_id = 5)
@@ -298,9 +274,9 @@ class MenuTableSeeder extends Seeder
 
         \App\Menu::create([
             'menu_id'                       => 6,
-            'nome'                          => 'Edição de Paciente',
+            'nome'                          => 'Consulta / Edição',
             'rota'                          => 'paciente.index',
-            'descricao'                     => 'Listagem de  Pacientes previamente cadastrados no sistema para edição',
+            'descricao'                     => 'Listagem de consulta de Pacientes para edição',
             'icone'                         => 'fa fa-folder-open-o',
             'ordem'                         => 4,
             'status'                        => 1,
@@ -311,7 +287,7 @@ class MenuTableSeeder extends Seeder
         #Item de menu Usuários (ordem 6, deve ter menu_id = 6)
         \App\Menu::create([
             'menu_id'                       => 7,
-            'nome'                          => 'Autorização | Edição de usuários',
+            'nome'                          => 'Controle de usuários',
             'rota'                          => 'usuarios.listagem',
             'descricao'                     => 'Autorização de Usuário no sistema',
             'icone'                         => 'fa fa-unlock-alt',

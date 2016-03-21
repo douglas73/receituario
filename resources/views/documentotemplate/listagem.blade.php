@@ -66,19 +66,19 @@
                                 <td>{{ $template->id }}</td>
                                 <td>{{ $template->tipo->nome }}</td>
                                 <td>
-                                    {{ $template->cabecalho }}
-                                    <hr/>
-                                    {{ $template->texto_central }}
-                                    <hr/>
-                                    {{ $template->rodape }}
-                                    <hr/>
-                                    {{ $template->ps }}
-                                    <hr/>
-                                    {{ $template->termos }}
+                                    {!! $template->cabecalho !!}
+                                    <br/>
+                                    {!! $template->texto_central !!}
+                                    <br/>
+                                    {!! $template->rodape !!}
+                                    <br/>
+                                    {!! $template->ps !!}
+                                    <br/>
+                                    {!! $template->termos !!}
 
                                 </td>
                                 <td>{!! $template->created_at->format('d/m/Y') !!}</td>
-                                <td><a href="{{ route('medicacao.edit', [$template->id])  }}"><span class="btn btn-block btn-default" title="Editar registro"><i class="fa fa-edit"></i></span></a></td>
+                                <td><a href="{{ route('documentotemplate.edit', [$template->id])  }}"><span class="btn btn-block btn-default" title="Editar registro"><i class="fa fa-edit"></i></span></a></td>
                                 <td><button class="btn btn-block btn-default" title="Excluir registro"><i class="fa fa-trash-o warning"></i></button></td>
                             </tr>
                         @endforeach

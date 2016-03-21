@@ -90,7 +90,6 @@ class DocumentoTemplateController extends Controller
             session()->flash('toastr.error', "ERRO!  O template NÃO foi registrado! Por favor repita a operação");
         }
 
-        dd($request->all());
         return redirect('documentotemplate/cadastro');
 
 
@@ -117,7 +116,17 @@ class DocumentoTemplateController extends Controller
      */
     public function edit($id)
     {
-        //
+        session()->put('idTemplate', $id);
+
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+
+        $documentoTipo           = DocumentoTipo::all();
+        $documentoTemplate      =  DocumentoTemplate::findOrFail((int) $id);
+        $idReg                  = $id;
+        return view('documentotemplate.edicao', compact('documentoTipo','documentoTemplate','idReg','headerInfo'));
     }
 
     /**
@@ -127,9 +136,23 @@ class DocumentoTemplateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DocumentoTemplateFormRequest $request, $id)
     {
-        //
+
+        if($id != session("idTemplate"))
+        {
+            abort(403, 'Violação de parâmetros.');
+        }
+
+        $updateDocumentoTemplate = DocumentoTemplate::find($id);
+        if($updateDocumentoTemplate->update($request->all()))
+        {
+            session()->flash('toastr.success', "Confirmado! O template foi ATUALIZADO com sucesso!");
+        }else{
+            session()->flash('toastr.error', "ERRO!  o template NÃO foi ATUALIZADO! Por favor repita a operação");
+        }
+        session()->forget('idTemplate');
+        return redirect('documentotemplate/listagem');
     }
 
     /**
