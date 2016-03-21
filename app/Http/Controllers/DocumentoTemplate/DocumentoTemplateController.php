@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Traits\PageHeaderTrait;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Route;
+use App\Http\Requests\DocumentoTemplateFormRequest;
 
 class DocumentoTemplateController extends Controller
 {
@@ -58,9 +59,10 @@ class DocumentoTemplateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DocumentoTemplateFormRequest $request)
     {
 
+        /*
         if(Input::hasFile('cabecalho_imagem')){
 
             $arquivo = Input::file('cabecalho_imagem');
@@ -77,9 +79,21 @@ class DocumentoTemplateController extends Controller
             echo "<br />Depois apague os arquivos de  public\storage do laravel";
             // return 'Arquivo carregado';
         }
+        */
 
+
+
+        if(DocumentoTemplate::create($request->all()))
+        {
+            session()->flash('toastr.success', "Confirmado! O template  foi registrado com sucesso!");
+        }else{
+            session()->flash('toastr.error', "ERRO!  O template NÃO foi registrado! Por favor repita a operação");
+        }
 
         dd($request->all());
+        return redirect('documentotemplate/cadastro');
+
+
 
 
     }
