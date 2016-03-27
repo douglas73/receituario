@@ -115,7 +115,7 @@ class MenuTableSeeder extends Seeder
         \App\Menu::create([
             'menu_id'                       => 2,
             'nome'                          => 'Novo Documento',
-            'rota'                          => '',
+            'rota'                          => 'documento.index',
             'descricao'                     => 'Criar novo Documento',
             'icone'                         => 'fa fa-stethoscope',
             'ordem'                         => 1,

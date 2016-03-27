@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Documento;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Route;
 
 class DocumentoController extends Controller
 {
+    use PageHeaderTrait;
     public function __construct()
     {
         $this->middleware('auth');
@@ -21,7 +24,11 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        //
+        /**
+         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
+         */
+        $headerInfo = $this->headerPageName(Route::currentRouteName());
+        return view('documento.criardocumento', compact('headerInfo'));
     }
 
     /**

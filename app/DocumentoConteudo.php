@@ -21,7 +21,7 @@ class DocumentoConteudo extends Model
      *
      * @var array
      */
-    protected $fillable = ['documento_id', 'categoria_medicacao_id', 'medicacao_id'];
+    protected $fillable = ['documento_id'];
 
 
     public function medicacao()

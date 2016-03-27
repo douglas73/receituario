@@ -27,6 +27,21 @@
     var statusId = {{ $documentoTemplate->status ? $documentoTemplate->status : '1'   }}
     $("#documento_tipo_id").val(docTipo);
     $("#status").val(statusId);
+
+
+    $("#bntTeste").click(function(){
+       // $("ps").val() = $("ps").val() = '<p>Este é um teste de inserção de um novo paragrafo </p>';
+
+        //pegar o conteudo do tinyMCE ...
+        var conteudo_original = tinyMCE.get('ps').getContent();
+
+        //adiciona mais conteudo o original...
+        var data  = conteudo_original + '<br /><span>Minha casa é cada manhã, não procure saber o que sou</span><h1>Os meus passos não é de ninguém</h1><p>vida louca,  vida!</p>';
+        tinyMCE.get('ps').setContent(data);
+        var teste = tinyMCE.get('ps').getContent();
+        alert(teste);
+    })
+
 @append
 
 @section('content')
@@ -107,7 +122,9 @@
                                 <hr>
                             </div><!-- /.box-body -->
                             <div class="box-footer">
+
                                    <button type="submit" class="btn btn-info pull-right">Gravar</button>
+                                <button type="button" id="bntTeste" name="bntTeste" class="btn btn-default pull-right">Aplicar conteudo</button>
                             </div><!-- /.box-footer -->
 
                         </form>

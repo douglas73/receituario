@@ -120,6 +120,14 @@ Route::group(['prefix' => 'documentotemplate'], function () {
 
 });
 ######################################
+# Documentos
+######################################
+Route::group(['prefix' => 'documento'], function () {
+    Route::get('criacao',       ['as' => 'documento.index',     'uses' => 'documento\DocumentoController@index']);
+    Route::get('cadastro',      ['as' => 'documento.create',    'uses' => 'documento\DocumentoController@create']);
+
+});
+######################################
 # Medicamentos
 ######################################
 Route::group(['prefix' => 'medicacao'], function () {
