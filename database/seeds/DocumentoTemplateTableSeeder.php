@@ -16,11 +16,13 @@ class DocumentoTemplateTableSeeder extends Seeder
 
         \App\DocumentoTemplate::create([
             'documento_tipo_id' => 1,
+            'nome'              => 'Template Padrão',
             'cabecalho'         => '######## Cabeçalho do documento ##########',
             'texto_central'     => '#####  TEXTO CENTRAL DO DOCUMENTO ######',
             'texto_central'     => '#####  TEXTO CENTRAL DO DOCUMENTO ######',
             'rodape'            => '#####  RODAPÉ DO DOCUMENTO  ######',
             'ps'                => '#####  PS  DO DOCUMENTO ########',
+            'padrao'            => 1,
         ]);
         $this->command->info('Layout padrão de documentos criado com sucesso!!!');
 

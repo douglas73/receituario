@@ -160,3 +160,11 @@ Route::group(['prefix' => 'paciente'], function () {
     Route::get('edit/{id}',     ['as' => 'paciente.edit',      'uses' => 'Paciente\PacienteController@edit']);
     Route::post('update/{id}',  ['as' => 'paciente.update',    'uses' => 'Paciente\PacienteController@update']);
 });
+
+
+######################################
+# Requisições Ajax
+######################################
+Route::group(['prefix' => 'ajax'], function () {
+    Route::any('preencheLstTemplates',      ['as' => 'ajax.preencheLstTemplate',     'uses' => 'Ajax\AjaxController@preencheLstTemplate']);
+});

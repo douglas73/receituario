@@ -19,7 +19,7 @@ class DocumentoTemplate extends Model
      *
      * @var array
      */
-    protected $fillable = ['documento_tipo_id','cabecalho', 'cabecalho_imagem', 'texto_central', 'texto_central_imagem', 'rodape_imagem', 'rodape','ps', 'status'];
+    protected $fillable = ['documento_tipo_id','nome','cabecalho', 'cabecalho_imagem', 'texto_central', 'texto_central_imagem', 'rodape_imagem', 'rodape','ps', 'status'];
 
     public function tipo()
     {

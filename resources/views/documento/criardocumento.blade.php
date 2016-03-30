@@ -18,10 +18,46 @@
     selector: '.textarea',
     language_url : '{{ asset ("tinymce/langs/pt_BR.js") }}'
     });
-@append
 
+    $.ajaxSetup({
+        headers:{
+        'X-CSRF-TOKEN':'{!! csrf_token() !!}'
+        }
+    });
+
+    $("#documento_tipo").change(function(){
+        var item = $(this).val();
+
+        $("#template").empty();
+        $("#template").html('<option value="">Carregando...</option>');
+
+        $.ajax({
+            method: 'POST',
+            url:'{{ route('ajax.preencheLstTemplate') }}',
+            data: {
+            dtid:item
+        }
+        }).done(function(data) {
+                console.log('Inicializando......');
+                console.log(data);
+                alert(data);
+                if(data !== ""){
+                    $("#template").empty();
+                    $("#template").append(data);
+                }
+                return false;
+        });
+    });
+
+
+@append
 @section('content')
 
+    <div class="row">
+        <p id="teste"></p>
+    </div>
+
+    <form class="form-horizontal" action="" method="post">
     <div class="row">
         <div class="col-lg-12">
             <div class="box box-success">
@@ -34,15 +70,15 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-lg-6">
-
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="row">
-                                <div class="col-lg-4"><label for="">Tipo de Documento:</label></div>
+                                <div class="col-lg-4"><label for="documento_tipo">Tipo de Documento:</label></div>
                                 <div class="col-lg-8">
                                     <select name="tipo_documento" id="documento_tipo" class="form-control">
-                                        <option value="0">Receita Médica</option>
-                                        <option value="1">Dispensa Médica</option>
-                                        <option value="2">Atestado</option>
-                                        <option value="3">Pedido de Exames</option>
+                                        <option value="" selected></option>
+                                        @foreach($tiposDocumentos as $tipo)
+                                            <option value="{{$tipo->id}}">{{$tipo->nome}}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -134,7 +170,7 @@
                 <div class="box-body">
                     <div class="row">
                         <div class="col-lg-10">
-                            <textarea name="" id="" cols="30" rows="5" class="textarea"></textarea>
+                            <textarea name="" id="" cols="30" rows="10" class="textarea"></textarea>
                         </div>
                         <div class="col-lg-2">
                             <a class="btn btn-block btn-social  btn-default">
@@ -189,7 +225,7 @@
         </div>
     </div>
 
-
+    </form>
 
 
 

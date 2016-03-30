@@ -15,6 +15,7 @@ class CreateDocumentoTemplateTable extends Migration
         Schema::create('documento_template', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('documento_tipo_id');
+            $table->string('nome',100);
             $table->text('cabecalho')->nullable();
             $table->string('cabecalho_imagem',200)->nullable();
             $table->text('texto_central')->nullable();
@@ -23,6 +24,7 @@ class CreateDocumentoTemplateTable extends Migration
             $table->string('rodape_imagem',200)->nullable();
             $table->text('ps')->nullable()->nullable();
             $table->string('termos',200)->nullable();
+            $table->integer('padrao')->default(0);
             $table->integer('status');
             $table->timestamps();
         });

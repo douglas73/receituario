@@ -1,21 +1,37 @@
 <?php
 
-namespace App\Http\Controllers\Documento;
+namespace App\Http\Controllers\Ajax;
 
-use App\DocumentoTipo;
+use App\DocumentoTemplate;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Traits\PageHeaderTrait;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Route;
 
-class DocumentoController extends Controller
+class AjaxController extends Controller
 {
-    use PageHeaderTrait;
-    public function __construct()
+
+    public function preencheLstTemplate(Request $request)
     {
-        $this->middleware('auth');
+        $tipo_id = $request->dtid;
+        if($request->ajax()){
+            //Retornar todos os templates deste tipo de documento
+            $templates = DocumentoTemplate::where('documento_tipo_id', $tipo_id)->get();
+
+            if(count($templates)>0)
+            {
+                $itensTemplates = null;
+                foreach($templates as $template)
+                {
+                    $itensTemplates.= '<option value="'.$template->id.'>'.$template->nome.'</option>';
+                }
+                return $itensTemplates;
+            }
+        }
+
     }
+
 
 
     /**
@@ -25,14 +41,7 @@ class DocumentoController extends Controller
      */
     public function index()
     {
-        /**
-         * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
-         */
-        $headerInfo = $this->headerPageName(Route::currentRouteName());
-
-        $tiposDocumentos = DocumentoTipo::all();
-
-        return view('documento.criardocumento', compact('headerInfo', 'tiposDocumentos'));
+        //
     }
 
     /**
