@@ -43,67 +43,128 @@
                         <form class="form-horizontal" action="{{ URL('documentotemplate/store')}}" method="post" enctype="multipart/form-data">
                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                             <div class="box-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="nome" class="col-sm-2 control-label">Tipo</label>
+                                            <div class="col-sm-6">
+                                                <select name="documento_tipo_id" id="documento_tipo_id" class="form-control">
+                                                    @foreach($documentoTipo as $tipo)
+                                                        <option value="{{ $tipo->id }}">{{ $tipo->nome }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="status" class="col-sm-1 control-label">Status</label>
+                                            <div class="col-sm-6">
+                                                <select class="form-control" id="status" name="status">
+                                                    <option value="1" selected>Ativo</option>
+                                                    <option value="0">Inativo</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                <div class="form-group">
-                                    <label for="nome" class="col-sm-2 control-label">Tipo</label>
-                                    <div class="col-sm-10">
-                                        <select name="documento_tipo_id" id="documento_tipo_id" class="form-control">
-                                        @foreach($documentoTipo as $tipo)
-                                            <option value="{{ $tipo->id }}">{{ $tipo->nome }}</option>
-                                        @endforeach
-                                        </select>
+                                </div>
+
+
+                                <div class="row" style="padding-top: 8px">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="nome" class="col-sm-1 control-label">Nome</label>
+                                            <div class="col-sm-10">
+                                                <input id="nome" name="nome" type="text" placeholder="Digite o nome do template" class="form-control input-md">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <hr>
-
-
-                                <div class="form-group">
-                                    <label for="cabecalho" class="col-sm-2 control-label">Cabeçalho</label>
-                                    <div class="col-sm-10">
-                                        <textarea  id="cabecalho" name="cabecalho" class="form-control textarea" rows="3" placeholder="Entre com Cabeçalho do documento">{{ old('cabecalho') }}</textarea>
+                                <div class="row" style="padding-top: 8px">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label for="texto_central" class="col-sm-1 control-label">Corpo</label>
+                                            <div class="col-sm-10">
+                                                <textarea  id="texto_central" name="texto_central" class="form-control textarea" rows="20" placeholder="Entre com o texto que será o template base do documento">{{ old('texto_central') }}</textarea>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <hr>
 
-                                <div class="form-group">
-                                    <label for="posologia" class="col-sm-2 control-label">Corpo</label>
-                                    <div class="col-sm-10">
-                                        <textarea  id="texto_central" name="texto_central" class="form-control textarea" rows="3" placeholder="Entre com o texto que será o corpo do documento">{{ old('texto_central') }}</textarea>
+                                <div class="row">
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-10"></div>
+                                    <div class="col-sm-1">
+                                        <!-- /.box-body -->
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-info pull-right">Gravar</button>
+                                        </div><!-- /.box-footer -->
                                     </div>
                                 </div>
-                                <hr>
 
 
-                                <div class="form-group">
-                                    <label for="rodape" class="col-sm-2 control-label">Rodapé</label>
-                                    <div class="col-sm-10">
-                                        <textarea  id="rodape" name="rodape" class="form-control textarea" rows="3" placeholder="Entre com o texto que será o rodapé do documento">{{ old('rodape') }}</textarea>
+                                <div class="row">
+                                    <div class="col-lg-1"></div>
+                                    <div class="col-lg-10">
+                                        <p>Você pode colocar termos que serão substituídos no formulario padrão.</p>
+                                        <p>Assim, quando você carregar um Paciente cadasrado,  estes termos serão subistiídos pelos
+                                            respectivos campos.</p>
+                                        <p>Os termos devem estar em CAIXA ALTA para que o sistema valide</p>
                                     </div>
+                                    <div class="col-lg-1"></div>
                                 </div>
-                                <hr>
+                                <div class="row" style="padding-top: 5px">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-4"><p>Paciente:</p></div>
+                                </div>
 
-                                <div class="form-group">
-                                    <label for="ps" class="col-sm-2 control-label">Post scriptum(ps)</label>
-                                    <div class="col-sm-10">
-                                        <textarea  id="ps" name="ps" class="form-control textarea" rows="3" placeholder="Entre com o texto que será o post scriptum do documento">{{ old('ps') }}</textarea>
-                                    </div>
+                                <div class="row"  style="padding-top: 5px">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-primary">PACIENTE</span></div>
+                                    <div class="col-sm-3">Nome do paciente</div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-primary">IDADE</span></div>
+                                    <div class="col-sm-3">Idade do paciente</div>
                                 </div>
-                                <hr>
 
-                                <div class="form-group">
-                                    <label for="status" class="col-sm-2 control-label">Status</label>
-                                    <div class="col-sm-10">
-                                        <select class="form-control" id="status" name="status">
-                                            <option value="1" selected>Ativo</option>
-                                            <option value="0">Inativo</option>
-                                        </select>
-                                    </div>
+                                <div class="row"  style="padding-top: 5px">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-primary">ENDEREÇO</span></div>
+                                    <div class="col-sm-3">Endereço do paciente</div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-primary"></span></div>
+                                    <div class="col-sm-3"></div>
                                 </div>
+                                <div class="row" style="padding-top: 5px">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-4"><p>Médico:</p></div>
+                                </div>
+                                <div class="row"   style="padding-top: 5px">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-success">MEDICO</span></div>
+                                    <div class="col-sm-3">Nome do Medico</div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-success">MEDICOC</span></div>
+                                    <div class="col-sm-3">Nome completo do Médico</div>
+                                </div>
+
+                                <div class="row"  style="padding-top: 5px">
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-success">CRM</span></div>
+                                    <div class="col-sm-3">CRM do médico</div>
+                                    <div class="col-sm-1"></div>
+                                    <div class="col-sm-1"><span class="label label-success">FRASE</span></div>
+                                    <div class="col-sm-3">Frase do Médico</div>
+                                </div>
+
+
+
                                 <hr>
-                            </div><!-- /.box-body -->
-                            <div class="box-footer">
-                                   <button type="submit" class="btn btn-info pull-right">Gravar</button>
-                            </div><!-- /.box-footer -->
+                            </div>
+
 
                         </form>
                     </div><!-- /.box -->

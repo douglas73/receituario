@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Documento;
 
 use App\DocumentoTipo;
+use App\Paciente;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -28,11 +29,12 @@ class DocumentoController extends Controller
         /**
          * Usando a Trait PageHeaderTrait,  retorna o nome do Título da Pagina e sua descrição no topo da mesma
          */
-        $headerInfo = $this->headerPageName(Route::currentRouteName());
+        $headerInfo         = $this->headerPageName(Route::currentRouteName());
 
-        $tiposDocumentos = DocumentoTipo::all();
+        $tiposDocumentos    = DocumentoTipo::all();
+        $pacientes          = Paciente::all();
 
-        return view('documento.criardocumento', compact('headerInfo', 'tiposDocumentos'));
+        return view('documento.criardocumento', compact('headerInfo', 'tiposDocumentos','pacientes'));
     }
 
     /**

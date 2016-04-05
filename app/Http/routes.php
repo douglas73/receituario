@@ -167,4 +167,7 @@ Route::group(['prefix' => 'paciente'], function () {
 ######################################
 Route::group(['prefix' => 'ajax'], function () {
     Route::any('preencheLstTemplates',      ['as' => 'ajax.preencheLstTemplate',     'uses' => 'Ajax\AjaxController@preencheLstTemplate']);
+    Route::any('carregaTemplate',           ['as' => 'ajax.carregaTemplate',     'uses' => 'Ajax\AjaxController@carregaTemplate']);
+    Route::any('carregaPacienteNome',       ['as' => 'ajax.carregaPacienteNome',     'uses' => 'Ajax\AjaxController@carregaPacienteNome']);
+    Route::any('carregaDadosPaciente',       ['as' => 'ajax.carregaDadosPaciente',     'uses' => 'Ajax\AjaxController@carregaDadosPaciente']);
 });
