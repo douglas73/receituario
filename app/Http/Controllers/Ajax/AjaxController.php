@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Ajax;
 
 use App\DocumentoTemplate;
 use App\Paciente;
+use App\DocumentoTemporario;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Route;
 
@@ -90,6 +92,68 @@ class AjaxController extends Controller
 
     }
 
+    public function montadocumento(Request $request, $codigoHtml)
+    {
+       //  $htmlDoc    = $request->docHtml;
+        // return 'Resposta: '.$htmlDoc;
+
+
+        $mpdf = new \mPDF('',    // mode - default ''
+            '',    // format - A4, for example, default ''
+            0,     // font size - default 0
+            '',    // default font family
+            10,    // margin_left
+            10,    // margin right
+            16,     // margin top
+            16,    // margin bottom
+            9,     // margin header
+            9,     // margin footer
+            'L');  // L - landscape, P - portrait
+
+        // $mpdf->WriteHTML(file_get_contents(asset("css/bootstrap.css")), 1);
+        $stylesheet = file_get_contents(asset("css/bootstrap.css"));
+        $mpdf->WriteHTML($stylesheet,1);
+
+
+        //  $mpdf->WriteHTML('<p>Hallo World</p>');
+        // $mpdf->WriteHTML(view('documento.docpadrao')->render(),2);
+        $mpdf->WriteHTML($codigoHtml,2);
+
+        return $mpdf->Output();
+
+    }
+
+    /**
+     * Este método,  solicitado por ajqx no formulario de criação de documentos,   funciona da seguinte forma:
+     * Ele recebe via POST 2 valores(o conteúdo html da documento e o id do tipo de documento).
+     * Ele entrão grava um registro no model DocumentoTemporario com os dados html do documento que esta sendo criado
+     * e depois de gravar,   se tudo ocorrer bem,   ele retornará o id deste registro gravado.
+     * Este id  será usado como parametro na geração de um arquivo PDF que será oriundo da modem Documento.
+     * A saida será uma chamada para este model (documento)  com um parametro, que é o id retornado deste metodo
+     * para gerar o pdf.
+     *
+     * TODO:  Criar o metodo visualizar  em DocumentoController,  que montará arquivo PDF para visualização.
+     * @param Request $request
+     * @return bool|mixed
+     */
+    public function gravaVisualizacao(Request $request)
+    {
+        #gravar a receita temporaria  na model Documento_temporario
+        $documentoTemporario                    = new DocumentoTemporario();
+        $documentoTemporario->documento_tipo_id = $request->type_document;
+        $documentoTemporario->nome              = date('YmdHis').'_'.Auth::user()->nomeCompleto();
+        $documentoTemporario->texto_central     = $request->docHtml;
+        $documentoTemporario->status            = 1;
+        if($documentoTemporario->save()){
+            $id_retorno                         = $documentoTemporario->id;
+        };
+        if(is_null($id_retorno)){
+            return false;
+        }else{
+            return $id_retorno;
+        }
+
+    }
 
 
     /**

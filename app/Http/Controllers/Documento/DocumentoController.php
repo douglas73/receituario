@@ -37,6 +37,60 @@ class DocumentoController extends Controller
         return view('documento.criardocumento', compact('headerInfo', 'tiposDocumentos','pacientes'));
     }
 
+    public function exemplo()
+    {
+
+        $mpdf = new \mPDF('',    // mode - default ''
+            '',    // format - A4, for example, default ''
+            0,     // font size - default 0
+            '',    // default font family
+            10,    // margin_left
+            10,    // margin right
+            16,     // margin top
+            16,    // margin bottom
+            9,     // margin header
+            9,     // margin footer
+            'L');  // L - landscape, P - portrait
+
+        // $mpdf->WriteHTML(file_get_contents(asset("css/bootstrap.css")), 1);
+        $stylesheet = file_get_contents(asset("css/bootstrap.css"));
+        $mpdf->WriteHTML($stylesheet,1);
+
+
+        $mpdf->WriteHTML('<p>Hallo World</p>');
+        $mpdf->WriteHTML(view('documento.docpadrao')->render(),2);
+        return $mpdf->Output();
+    }
+
+
+    public function visualizacao($par)
+    {
+
+        $mpdf = new \mPDF('',    // mode - default ''
+            '',    // format - A4, for example, default ''
+            0,     // font size - default 0
+            '',    // default font family
+            10,    // margin_left
+            10,    // margin right
+            16,     // margin top
+            16,    // margin bottom
+            9,     // margin header
+            9,     // margin footer
+            'L');  // L - landscape, P - portrait
+
+        // $mpdf->WriteHTML(file_get_contents(asset("css/bootstrap.css")), 1);
+        $stylesheet = file_get_contents(asset("css/bootstrap.css"));
+        $mpdf->WriteHTML($stylesheet,1);
+
+
+        $mpdf->WriteHTML('<p>Hallo World</p>');
+        $mpdf->WriteHTML('<p>'.$par.'</p>');
+        $mpdf->WriteHTML(view('documento.docpadrao')->render(),2);
+        return $mpdf->Output();
+    }
+
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -51,10 +51,13 @@
 
     function display_and_close_tools()
     {
+        /*
         $("#box_ferramentas").removeClass('collapsed-box');
         setTimeout(function(){
             $("#box_ferramentas").addClass('collapsed-box');
         },1000);
+        */
+
     }
 
     $("#bntCarrega_template").click(function(e){
@@ -101,6 +104,37 @@
             return false;
         });
     });
+    $("#bntVisualizarDocumento").click(function(e){
+        e.preventDefault();
+
+        var tdoc = $("#documento_tipo").val();
+        if(tdoc === ""){
+            alert('Você deve escolher um tipo de documento antes de continuar');
+        }else{
+            var text_documento = tinyMCE.get('texto_central').getContent();
+            $.ajax({
+                method: 'POST',
+                url:'{{ route('ajax.setvisualizacao') }}',
+                data: {
+                docHtml:text_documento,
+                type_document:tdoc
+            }
+            }).done(function(data) {
+                console.log(data);
+                $("#teste").html(data);
+                // $("#teste").html(data);
+                return false;
+            });
+
+        }
+
+
+        // window.location = "{$base_url}" + "qualidade/pop/procedimentos/" + '{$id_segmento}';
+    });
+
+
+
+
     $("#bntCarregaDadosPaciente").click(function(e){
         e.preventDefault();
         $.ajax({
@@ -173,7 +207,7 @@
             </div>
         </div>
     </div>
-
+    <div id="teste"></div>
     <form class="form-horizontal" action="" method="post">
     <div class="row" id="douglas">
         <div class="col-lg-12">
@@ -227,7 +261,7 @@
     </div>
         <div class="row" id="botoes">
             <div class="col-lg-12">
-                <div class="box box-warning collapsed-box" id="box_ferramentas">
+                <div class="box box-warning" id="box_ferramentas">
                     <div class="box-header">
                         <h3 class="box-title"><span class="badge bg-blue-gradient">2</span> Ferramentas</h3>
                         <div class="box-tools pull-right">
@@ -253,7 +287,7 @@
                                         <span class="badge bg-red-gradient">Novo</span>
                                         <i class="fa fa-save"></i> Gravar
                                     </a>
-                                    <a class="btn btn-app bg-teal-gradient" title="Visualizar documento" alt="Visualizar documento">
+                                    <a class="btn btn-app bg-teal-gradient" title="Visualizar documento" alt="Visualizar documento" id="bntVisualizarDocumento">
                                         <i class="fa fa-eye"></i> Visualizar
                                     </a>
 
