@@ -6,7 +6,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>Hcc Receituario | Dashboard</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <!-- Bootstrap 3.3.2 -->
     <link href="{{ asset("css/all.css") }}" rel="stylesheet" type="text/css" />
@@ -40,7 +40,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main Header -->
     <header class="main-header">
         <!-- Logo -->
-        <a href="index2.html" class="logo"><b>Admin</b>LTE</a>
+        <a href="index2.html" class="logo"><b>Hcc</b>Receituário</a>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">

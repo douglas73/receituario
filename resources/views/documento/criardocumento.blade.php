@@ -122,7 +122,14 @@
             }).done(function(data) {
                 console.log(data);
                 $("#teste").html(data);
-                // $("#teste").html(data);
+
+                if($.isNumeric(data)){
+                    alert('{{ url('documento/1') }}');
+                    // window.location = "{{ url('documento/visualizacao') }}" + "/" + data;
+                    window.open("{{ url('documento/visualizacao') }}" + "/" + data, "_blank");
+                }else{
+                    alert('Não é numérico');
+                }
                 return false;
             });
 
@@ -324,14 +331,9 @@
                             <textarea name="texto_central" id="texto_central" cols="30" rows="20" class="textarea"></textarea>
                         </div>
                         <div class="col-lg-2">
-                            <a class="btn btn-block btn-social  btn-default">
-                                <i class="fa fa-clipboard"></i> Dados padrão
-                            </a>
-                            <a class="btn btn-block btn-social btn-warning">
-                                <i class="fa fa-angle-double-up"></i> Inverte seleção
-                            </a>
-                            <a class="btn btn-block btn-social btn-info">
-                                <i class="fa fa-chain-broken"></i> Outra função
+                            <a class="btn btn-app" title="Adicionar Fármaco / Medicação" alt="Adicionar Fármaco / Medicaçã">
+                                <span class="badge bg-red-gradient">000</span>
+                                <i class="fa fa-medkit"></i> Add Prescrição
                             </a>
                         </div>
                     </div>

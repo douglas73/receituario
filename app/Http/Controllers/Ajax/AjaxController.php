@@ -152,7 +152,6 @@ class AjaxController extends Controller
         }else{
             return $id_retorno;
         }
-
     }
 
 

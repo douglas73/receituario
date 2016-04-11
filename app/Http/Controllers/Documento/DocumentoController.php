@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Documento;
 
+use App\DocumentoTemporario;
 use App\DocumentoTipo;
 use App\Paciente;
 use Illuminate\Http\Request;
@@ -65,6 +66,13 @@ class DocumentoController extends Controller
 
     public function visualizacao($par)
     {
+        #Localizar documento temporario
+        $temporario = DocumentoTemporario::findOrFail($par);
+
+        if(count($temporario)>0){
+            $conteudo   = $temporario->texto_central;
+
+        }
 
         $mpdf = new \mPDF('',    // mode - default ''
             '',    // format - A4, for example, default ''
@@ -83,8 +91,8 @@ class DocumentoController extends Controller
         $mpdf->WriteHTML($stylesheet,1);
 
 
-        $mpdf->WriteHTML('<p>Hallo World</p>');
-        $mpdf->WriteHTML('<p>'.$par.'</p>');
+        $mpdf->WriteHTML('<p>Montagem da Receita com padão basico</p>');
+        $mpdf->WriteHTML('<p>'.$conteudo.'</p>');
         $mpdf->WriteHTML(view('documento.docpadrao')->render(),2);
         return $mpdf->Output();
     }

@@ -125,10 +125,10 @@ Route::group(['prefix' => 'documentotemplate'], function () {
 # Documentos
 ######################################
 Route::group(['prefix' => 'documento'], function () {
-    Route::get('criacao',       ['as' => 'documento.index',     'uses' => 'documento\DocumentoController@index']);
-    Route::get('cadastro',      ['as' => 'documento.create',    'uses' => 'documento\DocumentoController@create']);
-    Route::get('documento',     ['as' => 'documento.exemplo',    'uses' => 'documento\DocumentoController@exemplo']);
-
+    Route::get('criacao',               ['as' => 'documento.index',     'uses' => 'documento\DocumentoController@index']);
+    Route::get('cadastro',              ['as' => 'documento.create',    'uses' => 'documento\DocumentoController@create']);
+    Route::get('documento',             ['as' => 'documento.exemplo',    'uses' => 'documento\DocumentoController@exemplo']);
+    Route::get('visualizacao/{id}',     ['as' => 'documento.visualizacao',  'uses' => 'documento\DocumentoController@visualizacao']);
 
 });
 ######################################
@@ -175,5 +175,6 @@ Route::group(['prefix' => 'ajax'], function () {
     Route::any('carregaPacienteNome',       ['as' => 'ajax.carregaPacienteNome',     'uses' => 'Ajax\AjaxController@carregaPacienteNome']);
     Route::any('carregaDadosPaciente',      ['as' => 'ajax.carregaDadosPaciente',     'uses' => 'Ajax\AjaxController@carregaDadosPaciente']);
     Route::any('setvisualizacao',           ['as' => 'ajax.setvisualizacao',     'uses' => 'Ajax\AjaxController@gravaVisualizacao']);
-    Route::any('visualizacao',              ['as' => 'ajax.montadocumento',     'uses' => 'Ajax\AjaxController@montadocumento']);
+    Route::any('visualizacao_old',          ['as' => 'ajax.montadocumento',     'uses' => 'Ajax\AjaxController@montadocumento']);
+
 });
