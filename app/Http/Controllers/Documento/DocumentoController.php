@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Documento;
 use App\DocumentoTemporario;
 use App\DocumentoTipo;
 use App\Paciente;
+use App\CatMedicacao;
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -34,8 +36,9 @@ class DocumentoController extends Controller
 
         $tiposDocumentos    = DocumentoTipo::all();
         $pacientes          = Paciente::all();
+        $medicacaoCategoria = CatMedicacao::all();
 
-        return view('documento.criardocumento', compact('headerInfo', 'tiposDocumentos','pacientes'));
+        return view('documento.criardocumento', compact('headerInfo', 'tiposDocumentos','pacientes','medicacaoCategoria'));
     }
 
     public function exemplo()
@@ -63,7 +66,15 @@ class DocumentoController extends Controller
         return $mpdf->Output();
     }
 
-
+    /**
+     * Este método é um complemento do metodo  Ajax.gravaVisualizacao   O retorno dele é um arquivo
+     * PDF criado e aberto em outr janela,   que será a visualizado da receita atual que esta sendo criada no
+     * fomulario principal.
+     * Ela usa como parametro o id da tabela de documento_temporario.
+     *
+     *  @param $par
+     * @return string
+     */
     public function visualizacao($par)
     {
         #Localizar documento temporario
@@ -72,29 +83,32 @@ class DocumentoController extends Controller
         if(count($temporario)>0){
             $conteudo   = $temporario->texto_central;
 
+            $mpdf = new \mPDF('',    // mode - default ''
+                '',    // format - A4, for example, default ''
+                0,     // font size - default 0
+                '',    // default font family
+                10,    // margin_left
+                10,    // margin right
+                16,     // margin top
+                16,    // margin bottom
+                9,     // margin header
+                9,     // margin footer
+                'L');  // L - landscape, P - portrait
+
+            // $mpdf->WriteHTML(file_get_contents(asset("css/bootstrap.css")), 1);
+            $stylesheet = file_get_contents(asset("css/bootstrap.css"));
+            $mpdf->WriteHTML($stylesheet,1);
+
+
+            $mpdf->WriteHTML('<p><span class="text-center">--- Montagem da Receita com padão basico --</span></p>');
+            $mpdf->WriteHTML('<p>'.$conteudo.'</p>');
+            // $mpdf->WriteHTML(view('documento.docpadrao')->render(),2);
+            return $mpdf->Output();
+        }else{
+            return false;
         }
 
-        $mpdf = new \mPDF('',    // mode - default ''
-            '',    // format - A4, for example, default ''
-            0,     // font size - default 0
-            '',    // default font family
-            10,    // margin_left
-            10,    // margin right
-            16,     // margin top
-            16,    // margin bottom
-            9,     // margin header
-            9,     // margin footer
-            'L');  // L - landscape, P - portrait
 
-        // $mpdf->WriteHTML(file_get_contents(asset("css/bootstrap.css")), 1);
-        $stylesheet = file_get_contents(asset("css/bootstrap.css"));
-        $mpdf->WriteHTML($stylesheet,1);
-
-
-        $mpdf->WriteHTML('<p>Montagem da Receita com padão basico</p>');
-        $mpdf->WriteHTML('<p>'.$conteudo.'</p>');
-        $mpdf->WriteHTML(view('documento.docpadrao')->render(),2);
-        return $mpdf->Output();
     }
 
 

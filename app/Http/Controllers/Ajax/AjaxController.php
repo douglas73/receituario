@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Ajax;
 
 use App\DocumentoTemplate;
+use App\Medicacao;
 use App\Paciente;
 use App\DocumentoTemporario;
 use Illuminate\Http\Request;
@@ -34,7 +35,44 @@ class AjaxController extends Controller
                 return $itensTemplates;
             }
         }
+    }
 
+    public function preencheLstMedicamento(Request $request)
+    {
+        $categoria_id = $request->dmid;
+        if($request->ajax()){
+            //Retornar todos os medicamentos da categoria selecionada
+
+            $medicamentos = Medicacao::where('categoria_medicacao_id', $categoria_id)->get();
+
+            if(count($medicamentos)>0)
+            {
+                $itensMedicamentos = null;
+
+                foreach($medicamentos as $medicamento)
+                {
+                    $itensMedicamentos.= '<option value="'.$medicamento->id.'">'.$medicamento->nome.'</option>';
+                }
+                return $itensMedicamentos;
+            }
+        }
+    }
+    public function preenchePosologia(Request $request)
+    {
+        $medicacao_id = $request->dPid;
+        if($request->ajax()){
+            //Retornar todos os medicamentos da categoria selecionada
+
+            $medicamentos = Medicacao::findOrFail($medicacao_id);
+
+            if(count($medicamentos)>0)
+            {
+                $posologia = $medicamentos->posologia;
+                return $posologia;
+            }else{
+                return false;
+            }
+        }
     }
 
     public function carregaTemplate(Request $request)

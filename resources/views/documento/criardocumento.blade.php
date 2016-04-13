@@ -49,6 +49,55 @@
         });
     });
 
+    $("#lstCategoriaMedicacao").change(function(){
+        $("#lstMedicacao").empty();
+        $("#lstMedicacao").html('<option value="">Carregando...</option>');
+        $("#panel_posologia").hide('slow');
+        $("#descricao_posologia").html('');
+        var item = $(this).val();
+        $.ajax({
+                method: 'POST',
+                url:'{{ route('ajax.preencheLstMedicamento') }}',
+                data: {
+                dmid:item
+            }
+            }).done(function(data) {
+                console.log('Inicializando......');
+                console.log(data);
+
+                if(data !== ""){
+                    $("#lstMedicacao").empty();
+                    $("#lstMedicacao").append('<option value="" selected></option>' + data);
+                }else{
+                    $("#lstMedicacao").html('<option value="">| NÃO FOI ENCONTRDA NENHUMA MEDICAÇÃO PARA ESTA CATEGORIA |</option>');
+                }
+            return false;
+        });
+    });
+
+    $("#lstMedicacao").change(function(){
+        var item = $(this).val();
+        $("#panel_posologia").hide('slow');
+        $("#descricao_posologia").html('');
+        $.ajax({
+            method: 'POST',
+            url:'{{ route('ajax.preenchePosologia') }}',
+            data: {
+            dPid:item
+        }
+        }).done(function(data) {
+            console.log('Inicializando......');
+            console.log(data);
+            $("#panel_posologia").show('slow');
+            $("#descricao_posologia").html(data);
+            return false;
+        });
+           // alert($("#lstMedicacao").val());
+            return false;
+    });
+
+
+
     function display_and_close_tools()
     {
         /*
@@ -88,6 +137,16 @@
          $("#modalCarregaPaciente").modal();
     });
 
+
+    $("#bntAddMedicacao").click(function(e){
+        e.preventDefault();
+        $("#panel_posologia").hide('slow');
+        $("#descricao_posologia").html('');
+        $("#lstMedicacao").empty();
+        $("#lstCategoriaMedicacao").val($("#lstCategoriaMedicacao option:first").val());
+        $("#modalCarregaPrescricao").modal();
+    });
+
     $("#bntModalCarregaPaciente").click(function(){
         var paciente = $("#lstPacientes").val();
         console.log(paciente);
@@ -124,7 +183,6 @@
                 $("#teste").html(data);
 
                 if($.isNumeric(data)){
-                    alert('{{ url('documento/1') }}');
                     // window.location = "{{ url('documento/visualizacao') }}" + "/" + data;
                     window.open("{{ url('documento/visualizacao') }}" + "/" + data, "_blank");
                 }else{
@@ -214,6 +272,67 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Carrega Medicação-->
+    <div class="modal fade" id="modalCarregaPrescricao" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Carregar Medicamento</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Escolha a categoria do Medicamento.  Depois escolha a medicação.</p>
+
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="nome" class="col-sm-2 control-label">Categoria</label>
+                            <div class="col-sm-11">
+                                <select name="lstCategoriaMedicacao" id="lstCategoriaMedicacao" class="form-control">
+                                    <option value="">Escolha a categoria...</option>
+                                    @foreach($medicacaoCategoria as $categoria)
+                                        <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px">
+                        <div class="form-group">
+                            <label for="nome" class="col-sm-2 control-label">Medicação:</label>
+                            <div class="col-sm-11">
+                                <select name="lstMedicacao" id="lstMedicacao" class="form-control">
+                                    <option value="">...</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 25px">
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-10">
+                            <div class="panel panel-default" id="panel_posologia" style="display: none">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Posologia a ser aplicada</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <span id="descricao_posologia"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-1"></div>
+
+                    </div>
+            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal"  id="bntModalCarregaPaciente">Carregar Medicação</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <div id="teste"></div>
     <form class="form-horizontal" action="" method="post">
     <div class="row" id="douglas">
@@ -331,7 +450,7 @@
                             <textarea name="texto_central" id="texto_central" cols="30" rows="20" class="textarea"></textarea>
                         </div>
                         <div class="col-lg-2">
-                            <a class="btn btn-app" title="Adicionar Fármaco / Medicação" alt="Adicionar Fármaco / Medicaçã">
+                            <a class="btn btn-app" title="Adicionar Fármaco / Medicação" alt="Adicionar Fármaco / Medicaçã" id="bntAddMedicacao">
                                 <span class="badge bg-red-gradient">000</span>
                                 <i class="fa fa-medkit"></i> Add Prescrição
                             </a>
