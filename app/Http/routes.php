@@ -125,10 +125,10 @@ Route::group(['prefix' => 'documentotemplate'], function () {
 # Documentos
 ######################################
 Route::group(['prefix' => 'documento'], function () {
-    Route::get('criacao',               ['as' => 'documento.index',     'uses' => 'documento\DocumentoController@index']);
-    Route::get('cadastro',              ['as' => 'documento.create',    'uses' => 'documento\DocumentoController@create']);
-    Route::get('documento',             ['as' => 'documento.exemplo',    'uses' => 'documento\DocumentoController@exemplo']);
-    Route::get('visualizacao/{id}',     ['as' => 'documento.visualizacao',  'uses' => 'documento\DocumentoController@visualizacao']);
+    Route::get('criacao',               ['as' => 'documento.index',         'uses' => 'Documento\DocumentoController@index']);
+    Route::get('cadastro',              ['as' => 'documento.create',        'uses' => 'Documento\DocumentoController@create']);
+    Route::get('documento',             ['as' => 'documento.exemplo',       'uses' => 'Documento\DocumentoController@exemplo']);
+    Route::get('visualizacao/{id}',     ['as' => 'documento.visualizacao',  'uses' => 'Documento\DocumentoController@visualizacao']);
 
 });
 ######################################
