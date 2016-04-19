@@ -26,6 +26,8 @@ elixir(function (mix) {
     mix.copy(bowerDir + 'blueimp-canvas-to-blob', 'public/blueimp-canvas-to-blob');
     mix.copy(bowerDir + 'blueimp-file-upload', 'public/blueimp-file-upload');
     mix.copy(bowerDir + 'blueimp-load-image', 'public/blueimp-load-image');
+    // mix.copy(bowerDir + 'Chart.js', 'public/Chart.js');
+
 
     //Css
     mix.copy(bowerDir + 'bootstrap/dist/css/bootstrap.css', 'public/css/bootstrap.css');

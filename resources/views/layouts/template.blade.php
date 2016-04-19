@@ -251,7 +251,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-            Versão atual 1.0.3 | Última atualização: 14/04/2016
+            Versão atual 1.0.4 | Última atualização: 18/04/2016
         </div>
         <!-- Default to the left -->
         <strong>  Copyright © 2015 <a href="#">Company</a>.</strong> All rights reserved.
